@@ -4,7 +4,7 @@ import { Play } from "lucide-react";
 
 // ─── Cloudinary ─────────────────────────────────────────────────────────────
 
-const CLOUD = "https://res.cloudinary.com/mrjnagvc";
+const CLOUD = "https://res.cloudinary.com/taboyyll";
 
 /** Optimized Cloudinary image URL by public ID. */
 export function cldImage(publicId: string, width = 1600) {

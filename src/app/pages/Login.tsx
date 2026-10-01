@@ -10,9 +10,9 @@ export const PARTNER_PORTAL_URL = "";
 // The home hero loop, blurred by Cloudinary (not the browser) and scaled
 // down, so the background costs ~120 KB and no GPU filter work.
 const BG_LOOP =
-  "https://res.cloudinary.com/mrjnagvc/video/upload/so_7,du_12,e_blur:200,q_auto:low,vc_auto,w_960,ac_none/Saber-C_Porous_Websiteloop_Final_sk3y6y.mp4";
+  "https://res.cloudinary.com/taboyyll/video/upload/so_7,du_12,e_blur:200,q_auto:low,vc_auto,w_960,ac_none/Saber-C_Porous_Websiteloop_Final_sk3y6y.mp4";
 const BG_POSTER =
-  "https://res.cloudinary.com/mrjnagvc/video/upload/so_7,e_blur:200,f_auto,q_auto,w_960/Saber-C_Porous_Websiteloop_Final_sk3y6y.jpg";
+  "https://res.cloudinary.com/taboyyll/video/upload/so_7,e_blur:200,f_auto,q_auto,w_960/Saber-C_Porous_Websiteloop_Final_sk3y6y.jpg";
 
 export default function Login() {
   usePageMeta(

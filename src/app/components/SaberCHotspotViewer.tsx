@@ -160,7 +160,7 @@ export default function SaberCHotspotViewer() {
             </div>
             <div className="inline-flex items-center px-3 py-1 rounded-[4px] bg-white/5 border border-white/10">
               <img 
-                src="https://res.cloudinary.com/mrjnagvc/image/upload/v1787072756/elevation-spine-saberc-avia-logo-white-rgb_mxhj8o.svg" 
+                src="https://res.cloudinary.com/taboyyll/image/upload/v1787072756/elevation-spine-saberc-avia-logo-white-rgb_mxhj8o.svg" 
                 alt="Saber-C AVIA™" 
                 className="h-4.5 w-auto object-contain opacity-90"
               />
@@ -215,7 +215,7 @@ export default function SaberCHotspotViewer() {
           {/* Main Image Container - Size precisely to the image to ensure accurate point placement */}
           <div className="relative w-full max-w-[640px] select-none flex items-center justify-center scale-[1.38] md:scale-[1.45] transition-transform duration-500 origin-center -mt-6 md:-mt-28">
             <motion.img
-              src="https://res.cloudinary.com/mrjnagvc/image/upload/v1790386326/Saber-C_BEAUTY-01-Implant_Contruct_Spikes_ISO_dnjphd.png"
+              src="https://res.cloudinary.com/taboyyll/image/upload/v1790386326/Saber-C_BEAUTY-01-Implant_Contruct_Spikes_ISO_dnjphd.png"
               alt="Saber-C Implant Construct ISO View"
               className="w-full h-auto block filter drop-shadow-[0_20px_45px_rgba(0,0,0,0.6)] relative z-10"
               initial={{ opacity: 0, scale: 0.95 }}

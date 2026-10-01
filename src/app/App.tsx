@@ -132,7 +132,7 @@ function Navbar() {
         <div className="flex items-center justify-between gap-3 max-w-[1400px] mx-auto pointer-events-auto bg-white/95 backdrop-blur-xl border border-black/[0.08] shadow-[0_8px_30px_rgba(0,0,0,0.08)] rounded-[5px] px-4 md:px-5 py-2.5">
           <Link to="/" className="flex items-center shrink-0 py-1 px-1" aria-label="Elevation Spine home">
             <img
-              src="https://res.cloudinary.com/mrjnagvc/image/upload/v1790386315/Elevation-Logo-ForAnimations_xlwquh.svg"
+              src="https://res.cloudinary.com/taboyyll/image/upload/v1790386315/Elevation-Logo-ForAnimations_xlwquh.svg"
               alt="Elevation Spine"
               className="h-[42px] md:h-[48px] w-auto object-contain"
               style={{ maxWidth: 230 }}
@@ -311,7 +311,7 @@ function Footer() {
         <div className="flex flex-col lg:flex-row justify-between gap-14">
           <div className="flex flex-col gap-8">
             <img
-              src="https://res.cloudinary.com/mrjnagvc/image/upload/v1790386315/Elevation-Logo-ForAnimations_xlwquh.svg"
+              src="https://res.cloudinary.com/taboyyll/image/upload/v1790386315/Elevation-Logo-ForAnimations_xlwquh.svg"
               alt="Elevation Spine"
               className="h-[46px] w-auto object-contain object-left brightness-0 invert opacity-90 self-start"
             />

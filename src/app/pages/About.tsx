@@ -11,7 +11,7 @@ const teamMembers = [
     name: "Charlie Gilbride",
     role: "Founder, President & Chief Executive Officer",
     linkedin: "https://www.linkedin.com/in/charles-gilbride-3a027a2/",
-    image: "https://res.cloudinary.com/mrjnagvc/image/upload/f_auto,q_auto,w_800/v1785982841/Charlie_uxl45h.jpg",
+    image: "https://res.cloudinary.com/taboyyll/image/upload/f_auto,q_auto,w_800/v1785982841/Charlie_uxl45h.jpg",
     shortBio: "Founder, President, and CEO with 30+ years of medical device experience bringing the Saber® Technology platform to market.",
     sections: [
       {
@@ -32,7 +32,7 @@ const teamMembers = [
     name: "John Kirwan",
     role: "Vice President, Research & Development",
     linkedin: "https://www.linkedin.com/in/john-kirwan-16744310/",
-    image: "https://res.cloudinary.com/mrjnagvc/image/upload/f_auto,q_auto,w_800/v1785982843/John_kbdj0n.jpg",
+    image: "https://res.cloudinary.com/taboyyll/image/upload/f_auto,q_auto,w_800/v1785982843/John_kbdj0n.jpg",
     shortBio: "Engineering leader overseeing product design, biomechanical testing, and clinical validation with 30+ years of experience.",
     sections: [
       {
@@ -57,7 +57,7 @@ const teamMembers = [
     name: "Zeke Isaacs",
     role: "Vice President, Sales & Distribution",
     linkedin: "https://www.linkedin.com/in/zeke-isaacs-2ab70942/",
-    image: "https://res.cloudinary.com/mrjnagvc/image/upload/f_auto,q_auto,w_800/v1785982840/Zeke_sbavfj.jpg",
+    image: "https://res.cloudinary.com/taboyyll/image/upload/f_auto,q_auto,w_800/v1785982840/Zeke_sbavfj.jpg",
     shortBio: "Commercial leader scaling national device distribution networks through clinical evidence and authentic surgeon relationships.",
     sections: [
       {
@@ -78,7 +78,7 @@ const teamMembers = [
     name: "Jim Steinkotter",
     role: "Vice President, Operations (COO)",
     linkedin: "https://www.linkedin.com/in/jimsteinkoetter/",
-    image: "https://res.cloudinary.com/mrjnagvc/image/upload/f_auto,q_auto,w_800/v1785982845/Jim_rkea1f.jpg",
+    image: "https://res.cloudinary.com/taboyyll/image/upload/f_auto,q_auto,w_800/v1785982845/Jim_rkea1f.jpg",
     shortBio: "Operational expert scaling supply chain and manufacturing operations with nearly 20 years of medical device experience.",
     sections: [
       {

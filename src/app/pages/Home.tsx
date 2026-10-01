@@ -6,9 +6,9 @@ import { NewsCard } from "./News.tsx";
 
 // Short, muted, compressed cut of the Saber-C animation loop (~0.6 MB).
 const HERO_LOOP =
-  "https://res.cloudinary.com/mrjnagvc/video/upload/so_7,du_12,q_auto:low,vc_auto,w_1600,ac_none/Saber-C_Porous_Websiteloop_Final_sk3y6y.mp4";
+  "https://res.cloudinary.com/taboyyll/video/upload/so_7,du_12,q_auto:low,vc_auto,w_1600,ac_none/Saber-C_Porous_Websiteloop_Final_sk3y6y.mp4";
 const HERO_POSTER =
-  "https://res.cloudinary.com/mrjnagvc/video/upload/so_7,f_auto,q_auto,w_1600/Saber-C_Porous_Websiteloop_Final_sk3y6y.jpg";
+  "https://res.cloudinary.com/taboyyll/video/upload/so_7,f_auto,q_auto,w_1600/Saber-C_Porous_Websiteloop_Final_sk3y6y.jpg";
 
 function Hero() {
   return (
