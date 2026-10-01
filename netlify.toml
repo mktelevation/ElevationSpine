@@ -4,8 +4,6 @@
 [build]
   publish = "docs"
   command = "echo 'Publishing prebuilt docs/'"
-  # Skip the deploy entirely unless the published site actually changed.
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- docs/ netlify.toml"
 
 # No deploy previews or branch deploys: only main goes out.
 [context.deploy-preview]
