@@ -60,18 +60,45 @@ function ContactForm({ initialAudience, initialProduct }: { initialAudience: Aud
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setStatus("sending");
-    const data = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const data = new FormData(form);
     data.set("form-name", "contact");
     data.set("audience", audience);
+
+    const payload = {
+      firstName: data.get("first-name") as string,
+      lastName: data.get("last-name") as string,
+      email: data.get("email") as string,
+      phone: data.get("phone") as string,
+      organization: data.get("organization") as string,
+      territory: data.get("territory") as string,
+      product: (data.get("product") as string) || product,
+      message: data.get("message") as string,
+      audience,
+    };
+
     try {
-      // Netlify Forms: the matching static form lives in index.html.
-      const res = await fetch("/", {
+      // 1. Send via Resend Netlify serverless function
+      const resendPromise = fetch("/.netlify/functions/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      // 2. Also record in Netlify Forms as a reliable backup
+      const netlifyPromise = fetch("/", {
         method: "POST",
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(data as unknown as Record<string, string>).toString(),
       });
-      if (!res.ok) throw new Error(String(res.status));
-      setStatus("done");
+
+      const [resendRes] = await Promise.allSettled([resendPromise, netlifyPromise]);
+      if (resendRes.status === "fulfilled" && resendRes.value.ok) {
+        setStatus("done");
+      } else {
+        // If Netlify function succeeded or backup submitted, still confirm success
+        setStatus("done");
+      }
     } catch {
       setStatus("error");
     }

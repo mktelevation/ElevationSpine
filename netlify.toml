@@ -4,6 +4,10 @@
 [build]
   publish = "docs"
   command = "echo 'Publishing prebuilt docs/'"
+  functions = "netlify/functions"
+
+[functions]
+  directory = "netlify/functions"
 
 # No deploy previews or branch deploys: only main goes out.
 [context.deploy-preview]
