@@ -18,7 +18,7 @@ const bulletIcons = [MoveVertical, GitFork, Square];
 const components = [
   { label: "Expandable Interbody", image: "xa-expandable-hero" },
   { label: "Anterior Lumbar Plate", image: "xa-plate-34x11" },
-  { label: "Construct", image: "xa-construct-updated-opaque" },
+  { label: "Construct", image: "XA_construct" },
 ];
 
 const specs = [
@@ -134,7 +134,7 @@ export default function SaberXADetail() {
             </div>
           </div>
           <div className="idle-float">
-            <img src={cldImage("xa-hero-construct-316", 1600)} alt="Saber-XA construct" className="w-full h-auto drop-shadow-[0_30px_60px_rgba(42,196,244,0.18)]" />
+            <img src={cldImage("XA_construct", 1600)} alt="Saber-XA construct" className="w-full h-auto drop-shadow-[0_30px_60px_rgba(42,196,244,0.18)]" />
           </div>
         </div>
       </section>

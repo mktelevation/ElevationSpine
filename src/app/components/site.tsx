@@ -48,7 +48,7 @@ export const XA = {
     "Zero-profile anterior lumbar plate",
   ],
   href: "/saber-xa",
-  render: "xa-hero-construct-316",
+  render: "XA_construct",
 };
 
 export const SPIKE_DISCLAIMER =
