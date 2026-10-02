@@ -54,25 +54,35 @@ function devContactPlugin(apiKey?: string) {
                 return;
               }
 
-              const resendRes = await fetch('https://api.resend.com/emails', {
-                method: 'POST',
-                headers: {
-                  'Authorization': 'Bearer ' + apiKey,
-                  'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                  from: 'Elevation Spine <onboarding@resend.dev>',
-                  to: ['marketing@elevationspine.com', 'martinklazmer@elevationspine.com'],
-                  reply_to: email,
-                  subject,
-                  html,
-                }),
-              });
+              const deliveryResults = await Promise.all(
+                ['marketing@elevationspine.com', 'martinklazmer@elevationspine.com'].map(async (recipient) => {
+                  try {
+                    const r = await fetch('https://api.resend.com/emails', {
+                      method: 'POST',
+                      headers: {
+                        'Authorization': 'Bearer ' + apiKey,
+                        'Content-Type': 'application/json',
+                      },
+                      body: JSON.stringify({
+                        from: 'Elevation Spine <onboarding@resend.dev>',
+                        to: [recipient],
+                        reply_to: email,
+                        subject,
+                        html,
+                      }),
+                    });
+                    const d = await r.json();
+                    return { recipient, ok: r.ok, status: r.status, data: d };
+                  } catch (e: any) {
+                    return { recipient, ok: false, error: e.message };
+                  }
+                })
+              );
 
-              const result = await resendRes.json();
+              const hasSuccess = deliveryResults.some((r) => r.ok);
               res.setHeader('Content-Type', 'application/json');
-              res.statusCode = resendRes.status;
-              res.end(JSON.stringify(result));
+              res.statusCode = hasSuccess ? 200 : 502;
+              res.end(JSON.stringify({ success: hasSuccess, deliveries: deliveryResults }));
             } catch (err: any) {
               res.statusCode = 500;
               res.setHeader('Content-Type', 'application/json');

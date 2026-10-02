@@ -127,29 +127,41 @@ export async function handler(event, context) {
 </html>
     `;
 
-    const resendRes = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: FROM_EMAIL,
-        to: TO_EMAILS,
-        reply_to: email,
-        subject,
-        html,
-      }),
-    });
+    // Send to each recipient individually so that if the domain is not yet verified in Resend,
+    // the account owner (marketing@elevationspine.com) still receives the email immediately
+    const deliveryResults = await Promise.all(
+      TO_EMAILS.map(async (recipient) => {
+        try {
+          const res = await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${RESEND_API_KEY}`,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              from: FROM_EMAIL,
+              to: [recipient],
+              reply_to: email,
+              subject,
+              html,
+            }),
+          });
+          const data = await res.json();
+          return { recipient, ok: res.ok, status: res.status, data };
+        } catch (e) {
+          return { recipient, ok: false, error: e.message };
+        }
+      })
+    );
 
-    const resendData = await resendRes.json();
+    const hasSuccess = deliveryResults.some((r) => r.ok);
 
-    if (!resendRes.ok) {
-      console.error("Resend API error:", resendData);
+    if (!hasSuccess) {
+      console.error("Resend API delivery failed for all recipients:", deliveryResults);
       return {
-        statusCode: resendRes.status,
+        statusCode: 502,
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ error: resendData }),
+        body: JSON.stringify({ error: "Delivery failed", details: deliveryResults }),
       };
     }
 
@@ -159,7 +171,7 @@ export async function handler(event, context) {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
       },
-      body: JSON.stringify({ success: true, id: resendData.id }),
+      body: JSON.stringify({ success: true, deliveries: deliveryResults }),
     };
   } catch (err) {
     console.error("Contact handler error:", err);
