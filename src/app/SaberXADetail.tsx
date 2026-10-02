@@ -1,20 +1,14 @@
+import { useState, useEffect } from "react";
 import { MoveVertical, GitFork, Square } from "lucide-react";
 import {
   XA,
-  ClickToPlayVideo,
   ClosingCta,
   PrimaryButton,
   ProductLockup,
   cldImage,
-  cldPoster,
-  cldVideo,
   contactHref,
   usePageMeta,
 } from "./components/site.tsx";
-
-// The XA animation is in production. When it arrives, set its Cloudinary
-// public ID here and the "See the System" section appears. No placeholder.
-const XA_ANIMATION: string | null = null;
 
 // Jim to approve the indications wording before it goes live.
 const SHOW_INDICATIONS = false;
@@ -40,6 +34,87 @@ const specs = [
 
 const sectionPad = "px-6 md:px-12 lg:px-16 py-20 md:py-24";
 
+function ExpandableInterbodyShowcase() {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setIsExpanded((prev) => !prev);
+    }, 2800);
+    return () => clearInterval(timer);
+  }, []);
+
+  return (
+    <section className={`bg-gradient-to-b from-[#070b14] to-[#0c1626] text-white ${sectionPad} overflow-hidden`}>
+      <div className="max-w-[1200px] mx-auto">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-[4px] bg-[#2ac4f4]/10 border border-[#2ac4f4]/25 text-[#2ac4f4] font-mono text-[12px] uppercase tracking-wider mb-4">
+              Dynamic Expansion Preview
+            </div>
+            <h2 className="font-heading font-bold text-[30px] md:text-[40px] tracking-tight text-white">
+              Expandable Interbody Technology
+            </h2>
+            <p className="text-white/70 text-[15px] md:text-[17px] leading-relaxed max-w-xl mt-2">
+              Continuous intra-operative adjustment of height and lordosis. Toggle between states or watch the expansion sequence.
+            </p>
+          </div>
+          <div className="inline-flex p-1 rounded-[6px] bg-white/5 border border-white/10 self-start md:self-auto">
+            <button
+              type="button"
+              onClick={() => setIsExpanded(false)}
+              className={`px-4 py-2 rounded-[4px] font-heading text-[13px] font-semibold transition-all cursor-pointer ${
+                !isExpanded ? "bg-[#2ac4f4] text-[#0a0e17] shadow-sm" : "text-white/70 hover:text-white"
+              }`}
+            >
+              Collapsed
+            </button>
+            <button
+              type="button"
+              onClick={() => setIsExpanded(true)}
+              className={`px-4 py-2 rounded-[4px] font-heading text-[13px] font-semibold transition-all cursor-pointer ${
+                isExpanded ? "bg-[#2ac4f4] text-[#0a0e17] shadow-sm" : "text-white/70 hover:text-white"
+              }`}
+            >
+              Expanded
+            </button>
+          </div>
+        </div>
+
+        {/* Visual flip showcase */}
+        <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-[10px] bg-[#070b14]/90 border border-white/10 overflow-hidden flex items-center justify-center p-6 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <div className="relative w-full max-w-[700px] h-full flex items-center justify-center">
+            {/* Collapsed Image */}
+            <img
+              src={cldImage("xa-expandable-hero", 1400)}
+              alt="Saber-XA collapsed interbody"
+              className={`absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-in-out ${
+                !isExpanded ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.15)]" : "opacity-0 scale-95 pointer-events-none"
+              }`}
+            />
+            {/* Expanded Image */}
+            <img
+              src={cldImage("xa-expandable-expanded-side-view", 1400)}
+              alt="Saber-XA expanded interbody"
+              className={`absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-in-out ${
+                isExpanded ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.25)]" : "opacity-0 scale-105 pointer-events-none"
+              }`}
+            />
+          </div>
+
+          {/* Status badge in bottom corner */}
+          <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-[4px] border border-white/10">
+            <span className={`w-2 h-2 rounded-full ${isExpanded ? "bg-[#2ac4f4] animate-pulse" : "bg-white/40"}`} />
+            <span className="font-mono text-[11px] uppercase tracking-wider text-white/90">
+              State: <strong className="text-[#2ac4f4]">{isExpanded ? "Expanded (Independent Lordosis & Height)" : "Collapsed (Insertion Profile)"}</strong>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default function SaberXADetail() {
   usePageMeta(
     "Saber-XA™ Expandable ALIF System | Elevation Spine",
@@ -64,15 +139,8 @@ export default function SaberXADetail() {
         </div>
       </section>
 
-      {/* 2. Animation (hidden until the XA animation is delivered) */}
-      {XA_ANIMATION && (
-        <section className={`bg-gradient-to-b from-[#070b14] to-[#0c1626] text-white ${sectionPad}`}>
-          <div className="max-w-[1200px] mx-auto">
-            <h2 className="font-heading font-bold text-[30px] md:text-[40px] tracking-tight mb-8">See the System</h2>
-            <ClickToPlayVideo src={cldVideo(XA_ANIMATION)} poster={cldPoster(XA_ANIMATION, 5)} title="Saber-XA product animation" />
-          </div>
-        </section>
-      )}
+      {/* 2. Expandable Interbody flip sequence */}
+      <ExpandableInterbodyShowcase />
 
       {/* 3. System overview */}
       <section className={`bg-white ${sectionPad}`}>
@@ -107,30 +175,8 @@ export default function SaberXADetail() {
         </div>
       </section>
 
-      {/* 4. Specifications: four cards, two by two on mobile */}
-      <section className={`bg-[#f8fafc] ${sectionPad}`}>
-        <div className="max-w-[1400px] mx-auto">
-          <h2 className="font-heading font-bold text-[#0a0e17] text-[30px] md:text-[40px] tracking-tight mb-10">Specifications</h2>
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
-            {specs.map((s) => (
-              <div key={s.title} className="lift bg-white border border-black/[0.08] hover:border-[#2ac4f4]/40 rounded-[8px] overflow-hidden flex flex-col">
-                <div className="bg-[#0f1520] aspect-[4/3]">
-                  <img src={cldImage(s.image, 700)} alt={s.title} loading="lazy" className="w-full h-full object-contain p-4" />
-                </div>
-                <div className="p-4 md:p-6">
-                  <h3 className="font-heading font-bold text-[#0a0e17] text-[15px] md:text-[18px] mb-2">{s.title}</h3>
-                  {s.lines.map((l) => (
-                    <p key={l} className="text-[#4a5568] text-[13px] md:text-[14px] leading-relaxed">{l}</p>
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 5. Fixation options */}
-      <section className={`bg-white ${sectionPad}`}>
+      {/* 4. Fixation options: Moved ABOVE Specifications */}
+      <section className={`bg-[#f8fafc] ${sectionPad} border-y border-black/[0.06]`}>
         <div className="max-w-[1200px] mx-auto">
           <h2 className="font-heading font-bold text-[#0a0e17] text-[30px] md:text-[40px] tracking-tight mb-4">Spike or Screw Fixation</h2>
           <p className="text-[#4a5568] text-[16px] md:text-[17px] leading-relaxed max-w-[760px] mb-10">
@@ -151,12 +197,34 @@ export default function SaberXADetail() {
             </figure>
           </div>
 
-          {/* 6. Indications */}
+          {/* Indications */}
           {SHOW_INDICATIONS && (
             <p className="text-[#64748b] text-[13px] leading-relaxed mt-8 max-w-[900px]">
               Saber-XA is indicated for anterior and oblique lateral approaches, L1–S1. Refer to the Instructions for Use for complete indications, contraindications, precautions, and warnings.
             </p>
           )}
+        </div>
+      </section>
+
+      {/* 5. Specifications: four cards, two by two on mobile */}
+      <section className={`bg-white ${sectionPad}`}>
+        <div className="max-w-[1400px] mx-auto">
+          <h2 className="font-heading font-bold text-[#0a0e17] text-[30px] md:text-[40px] tracking-tight mb-10">Specifications</h2>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-6">
+            {specs.map((s) => (
+              <div key={s.title} className="lift bg-white border border-black/[0.08] hover:border-[#2ac4f4]/40 rounded-[8px] overflow-hidden flex flex-col">
+                <div className="bg-[#0f1520] aspect-[4/3]">
+                  <img src={cldImage(s.image, 700)} alt={s.title} loading="lazy" className="w-full h-full object-contain p-4" />
+                </div>
+                <div className="p-4 md:p-6">
+                  <h3 className="font-heading font-bold text-[#0a0e17] text-[15px] md:text-[18px] mb-2">{s.title}</h3>
+                  {s.lines.map((l) => (
+                    <p key={l} className="text-[#4a5568] text-[13px] md:text-[14px] leading-relaxed">{l}</p>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

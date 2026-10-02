@@ -37,17 +37,20 @@ const reasons = [
   {
     title: "Zero-Profile",
     body: "The implant sits flush with the vertebral body providing a zero-profile construct.",
-    image: "avia-hero-825-338",
+    images: [{ id: "avia-hero-825-338", alt: "Zero-profile construct" }],
   },
   {
     title: "Fixation Options",
     body: "Saber-C AVIA accommodates both spike and screw fixation options, providing operative flexibility depending on your surgical goals and patient anatomy.",
-    image: "avia-beauty-09-implant-construct-spikes-lateral",
+    images: [
+      { id: "avia-beauty-09-implant-construct-spikes-lateral", label: "Spikes", alt: "Spike fixation construct" },
+      { id: "avia-beauty-10-implant-construct-screws-lateral", label: "Screws", alt: "Screw fixation construct" },
+    ],
   },
   {
     title: "Simplified Technique",
     body: "With its zero-profile plate and low-profile in-line fixation, Saber-C AVIA helps to simplify adjacent segment fusion.",
-    image: "avia-tech-18-adjacent-segment-spikes",
+    images: [{ id: "avia-tech-18-adjacent-segment-spikes", alt: "Simplified adjacent segment technique" }],
   },
 ];
 
@@ -83,20 +86,7 @@ export default function SaberCDetail() {
         </div>
       </section>
 
-      {/* 2. Animation */}
-      <section className={`bg-gradient-to-b from-[#070b14] to-[#0c1626] text-white ${sectionPad}`}>
-        <div className="max-w-[1200px] mx-auto">
-          <h2 className="font-heading font-bold text-[30px] md:text-[40px] tracking-tight mb-8">See the System</h2>
-          <ClickToPlayVideo
-            src={cldVideo(ANIMATION)}
-            poster={cldPoster(ANIMATION, 40)}
-            title="Saber-C AVIA product animation"
-          />
-          <SpikeDisclaimer dark className="mt-3" />
-        </div>
-      </section>
-
-      {/* 3. System overview */}
+      {/* 2. System overview */}
       <section className={`bg-white ${sectionPad}`}>
         <div className="max-w-[1400px] mx-auto">
           <h2 className="font-heading font-bold text-[#0a0e17] text-[30px] md:text-[40px] tracking-tight mb-10">System Overview</h2>
@@ -124,6 +114,19 @@ export default function SaberCDetail() {
               </figure>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* 3. Animation: See the System (moved under System Overview) */}
+      <section className={`bg-gradient-to-b from-[#070b14] to-[#0c1626] text-white ${sectionPad}`}>
+        <div className="max-w-[1200px] mx-auto">
+          <h2 className="font-heading font-bold text-[30px] md:text-[40px] tracking-tight mb-8">See the System</h2>
+          <ClickToPlayVideo
+            src={cldVideo(ANIMATION)}
+            poster={cldPoster(ANIMATION, 40)}
+            title="Saber-C AVIA product animation"
+          />
+          <SpikeDisclaimer dark className="mt-3" />
         </div>
       </section>
 
@@ -189,9 +192,24 @@ export default function SaberCDetail() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {reasons.map((r) => (
               <article key={r.title}>
-                <div className="bg-[#0f1520] rounded-[8px] aspect-[4/3] overflow-hidden mb-5">
-                  <img src={cldImage(r.image, 900)} alt="" loading="lazy" className="parallax-img w-full h-full object-cover" />
-                </div>
+                {r.images.length === 2 ? (
+                  <div className="bg-[#0f1520] rounded-[8px] aspect-[4/3] overflow-hidden mb-5 grid grid-cols-2 gap-2 p-2">
+                    {r.images.map((img) => (
+                      <div key={img.id} className="relative h-full overflow-hidden rounded-[4px] bg-[#070b14] flex flex-col items-center justify-center">
+                        <img src={cldImage(img.id, 600)} alt={img.alt} loading="lazy" className="w-full h-full object-contain p-2" />
+                        {img.label && (
+                          <span className="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-black/75 text-white/90 font-mono text-[10px] uppercase tracking-wider backdrop-blur-sm">
+                            {img.label}
+                          </span>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="bg-[#0f1520] rounded-[8px] aspect-[4/3] overflow-hidden mb-5">
+                    <img src={cldImage(r.images[0].id, 900)} alt={r.images[0].alt} loading="lazy" className="parallax-img w-full h-full object-cover" />
+                  </div>
+                )}
                 <h3 className="font-heading font-bold text-[#0a0e17] text-[22px] mb-2">{r.title}</h3>
                 <p className="text-[#4a5568] text-[15px] md:text-[16px] leading-relaxed">{r.body}</p>
               </article>

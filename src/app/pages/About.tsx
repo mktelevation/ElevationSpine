@@ -174,30 +174,21 @@ export default function About() {
         )}
       </AnimatePresence>
 
-      {/* Header. TODO: swap in the team/office photo from Martin when it arrives. */}
+      {/* Header */}
       <header className="atmos overflow-hidden text-white px-6 md:px-12 lg:px-16 pt-40 pb-24">
         <div className="max-w-[1400px] mx-auto">
           <h1 className="font-heading font-bold text-[44px] md:text-[60px] leading-[1.05] tracking-tight mb-5">About Elevation Spine</h1>
-          <p className="text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-2xl">
-            Elevation Spine is a Monterey, California medical device company focused on spinal fusion.
+          <p className="text-white/75 text-[17px] md:text-[19px] leading-relaxed max-w-3xl">
+            Elevation Spine is a Monterey, California-based developer of integrated-fixation spinal technologies. The company specializes in the proprietary Saber platform, which integrates zero-profile anterior fixation with interbody support to simplify surgical workflows and improve patient outcomes across both the cervical and lumbar spine.
           </p>
         </div>
       </header>
 
       <div className="px-6 md:px-12 lg:px-16 py-20 md:py-24">
         <div className="max-w-[1400px] mx-auto">
-          {/* CEO video */}
-          <div className="max-w-[1100px] mb-24">
-            <ClickToPlayVideo
-              src={cldVideo(CEO_VIDEO)}
-              poster={cldPoster(CEO_VIDEO, 5)}
-              title="Charlie Gilbride, Founder, President and CEO of Elevation Spine"
-            />
-          </div>
-
           {/* Leadership */}
-          <h2 className="font-heading font-bold text-[#1a2535] text-[32px] md:text-[40px] leading-[1.1] tracking-tight mb-10">Leadership</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <h2 className="font-heading font-bold text-[#1a2535] text-[32px] md:text-[40px] leading-[1.1] tracking-tight mb-10">Leadership Team</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
             {teamMembers.map((member) => (
               <button
                 type="button"
@@ -222,6 +213,18 @@ export default function About() {
                 </div>
               </button>
             ))}
+          </div>
+
+          {/* CEO video */}
+          <div className="max-w-[1100px] mx-auto">
+            <h2 className="font-heading font-bold text-[#1a2535] text-[28px] md:text-[34px] leading-[1.1] tracking-tight mb-6">
+              Our Vision & Saber Platform
+            </h2>
+            <ClickToPlayVideo
+              src={cldVideo(CEO_VIDEO)}
+              poster="https://res.cloudinary.com/taboyyll/image/upload/b_rgb:0a0e17,c_pad,h_900,w_1600/Elevation-Logo-ForAnimations_xlwquh.svg"
+              title="Charlie Gilbride, Founder, President and CEO of Elevation Spine"
+            />
           </div>
         </div>
       </div>
