@@ -56,11 +56,11 @@ function SystemCard({
 }) {
   return (
     <div className="lift bg-white border border-black/[0.08] hover:border-[#2ac4f4]/40 rounded-[8px] overflow-hidden flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-      <Link to={product.href} className="relative block bg-[#0f1520] aspect-[16/10] overflow-hidden" tabIndex={-1} aria-hidden="true">
+      <Link to={product.href} className="relative block w-full shrink-0 bg-[#0f1520] aspect-[4/3] overflow-hidden flex items-center justify-center p-6 md:p-8" tabIndex={-1} aria-hidden="true">
         <img
           src={cldImage(product.render, 1200)}
           alt=""
-          className="w-full h-full object-contain p-6"
+          className="max-w-full max-h-full h-[88%] w-auto object-contain filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.15)]"
         />
       </Link>
       <div className="p-7 md:p-9 flex flex-col flex-1">
