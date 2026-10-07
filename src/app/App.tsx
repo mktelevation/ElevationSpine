@@ -62,7 +62,7 @@ export function TextRevealTitle({
 // ─── Navbar ───────────────────────────────────────────────────────────────────
 
 const productLinks = [
-  { label: "SABER-C | AVIA™", sub: "ACDF Fixation System", href: "/saber-c" },
+  { label: "SABER-C® | AVIA™", sub: "ACDF Fixation System", href: "/saber-c" },
   { label: "SABER-XA™", sub: "Expandable ALIF System", href: "/saber-xa" },
 ];
 

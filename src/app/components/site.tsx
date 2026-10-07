@@ -24,35 +24,44 @@ export function cldPoster(publicId: string, second = 2, width = 1600) {
 // ─── Product names & shared copy ────────────────────────────────────────────
 
 export const AVIA = {
-  lockup: "SABER-C | AVIA™",
+  lockup: "SABER-C® | AVIA™",
   descriptor: "ACDF FIXATION SYSTEM",
   sentence:
-    "Saber-C AVIA is a complete anterior cervical fixation system combining porous 3D-printed titanium, plate-level stability, and the choice of spike or screw fixation.",
+    "Porous titanium architecture. Spike + screw fixation options. Zero-profile anterior cervical plate.",
   bullets: [
     "Porous titanium architecture",
     "Spike + screw fixation options",
     "Zero-profile anterior cervical plate",
   ],
   href: "/saber-c",
-  render: "avia-hero-231",
+  render: "SaberCA-Images-Oct2026-01",
 };
 
 export const XA = {
   lockup: "SABER-XA™",
   descriptor: "EXPANDABLE ALIF SYSTEM",
   sentence:
-    "Saber-XA is an expandable anterior lumbar interbody with independent height and lordosis adjustment, 3D-printed titanium endplates, and the choice of spike or screw fixation through an anterior plate.",
+    "Independent height + lordosis expansion. Spike + screw fixation options. Zero-profile anterior lumbar plate.",
   bullets: [
     "Independent height + lordosis expansion",
     "Spike + screw fixation options",
     "Zero-profile anterior lumbar plate",
   ],
   href: "/saber-xa",
-  render: "XA_construct",
+  render: "SaberXA-Images-Oct2026-01",
 };
 
 export const SPIKE_DISCLAIMER =
   "When Saber-C AVIA is used with spikes, supplemental fixation is required.";
+
+/** Tag badge indicating mockup image code and slide reference */
+export function ImageTag({ code }: { code: string }) {
+  return (
+    <span className="inline-block bg-[#f59e0b] text-[#1c1917] font-mono font-bold text-[11px] px-2.5 py-1 rounded-[4px] shadow-sm tracking-tight z-20">
+      {code}
+    </span>
+  );
+}
 
 /** Small italic line placed directly under any AVIA spike image. */
 export function SpikeDisclaimer({ className = "", dark = false }: { className?: string; dark?: boolean }) {

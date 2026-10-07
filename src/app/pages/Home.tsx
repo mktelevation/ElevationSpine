@@ -56,7 +56,7 @@ function SystemCard({
 }) {
   return (
     <div className="lift bg-white border border-black/[0.08] hover:border-[#2ac4f4]/40 rounded-[8px] overflow-hidden flex flex-col shadow-[0_8px_30px_rgba(0,0,0,0.04)]">
-      <Link to={product.href} className="block bg-[#0f1520] aspect-[16/10] overflow-hidden" tabIndex={-1} aria-hidden="true">
+      <Link to={product.href} className="relative block bg-[#0f1520] aspect-[16/10] overflow-hidden" tabIndex={-1} aria-hidden="true">
         <img
           src={cldImage(product.render, 1200)}
           alt=""
@@ -71,7 +71,7 @@ function SystemCard({
           to={product.href}
           className="mt-auto inline-flex items-center gap-2 font-heading font-bold text-[14px] text-[#0891b2] hover:text-[#0a0e17] transition-colors self-start"
         >
-          {linkLabel} <ArrowRight className="w-4 h-4" />
+          {linkLabel}
         </Link>
       </div>
     </div>
@@ -86,10 +86,10 @@ function OurSystems() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           <SystemCard
             product={AVIA}
-            linkLabel="View Saber-C AVIA"
+            linkLabel="View Saber-C AVIA →"
             imageNote={<SpikeDisclaimer className="-mt-2 mb-5" />}
           />
-          <SystemCard product={XA} linkLabel="View Saber-XA" />
+          <SystemCard product={XA} linkLabel="View Saber-XA →" />
         </div>
       </div>
     </section>

@@ -27,3 +27,8 @@ dist-ssr/
 *.sln
 *.sw?
 .claude/
+
+# Client assets and local source files
+extracted_images/
+new_images/
+pdf_files/
