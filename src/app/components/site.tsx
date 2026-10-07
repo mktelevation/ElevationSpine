@@ -34,7 +34,7 @@ export const AVIA = {
     "Zero-profile anterior cervical plate",
   ],
   href: "/saber-c",
-  render: "SaberCA-Images-Oct2026-01",
+  render: "NASS_HERO_IMAGES-01",
 };
 
 export const XA = {
@@ -48,7 +48,7 @@ export const XA = {
     "Zero-profile anterior lumbar plate",
   ],
   href: "/saber-xa",
-  render: "SaberXA-Images-Oct2026-01",
+  render: "NASS_HERO_IMAGES-02",
 };
 
 export const SPIKE_DISCLAIMER =

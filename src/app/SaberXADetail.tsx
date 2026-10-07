@@ -9,26 +9,22 @@ import {
   usePageMeta,
 } from "./components/site.tsx";
 
-const overviewCards = [
+const heroFeatures = [
   {
-    num: "01",
-    title: "Independent expansion",
-    body: "Height, lordosis, or both at once, in situ, through one inserter with three color-coded drivers. The interbody self-locks when expanded.",
+    title: "Independent Height + Lordosis Expansion",
+    desc: "Adjust height and lordosis separately, intra-operatively.",
   },
   {
-    num: "02",
-    title: "Spike or screw fixation",
-    body: "In-line spikes (5.0 mm) or screws (Ø5.0 and 5.5 mm), with straight and angled instruments.",
+    title: "3D-Printed Titanium Endplates",
+    desc: "Three footprints, three sizes per footprint.",
   },
   {
-    num: "03",
-    title: "Zero-profile plate",
-    body: "Anterior lumbar plate in 34, 37 and 40 mm widths. It can also be placed alone as supplemental fixation.",
+    title: "Spike + Screw Fixation Options",
+    desc: "Choose spikes or screws through the anterior plate.",
   },
   {
-    num: "04",
-    title: "3D-printed endplates",
-    body: "Additively manufactured titanium with a 9 µm roughened surface and vertical cavities for graft.",
+    title: "Zero-profile Anterior Lumbar Plate",
+    desc: "",
   },
 ];
 
@@ -47,33 +43,63 @@ const photoRow = [
   },
 ];
 
-const sizingData = [
-  { footprint: "34W x 26D mm", height: "11–14 mm", lordosis: "6°–13°", plate: "34W x 11H mm", color: "text-[#0284c7]" },
-  { footprint: "34W x 26D mm", height: "13–16 mm", lordosis: "12°–19°", plate: "34W x 13H mm", color: "text-[#0284c7]" },
-  { footprint: "34W x 26D mm", height: "16–19 mm", lordosis: "18°–25°", plate: "34W x 16H mm", color: "text-[#0284c7]" },
-  { footprint: "37W x 28D mm", height: "11–14 mm", lordosis: "6°–13°", plate: "37W x 11H mm", color: "text-[#d97706]" },
-  { footprint: "37W x 28D mm", height: "13–16 mm", lordosis: "12°–19°", plate: "37W x 13H mm", color: "text-[#d97706]" },
-  { footprint: "37W x 28D mm", height: "16–19 mm", lordosis: "18°–25°", plate: "37W x 16H mm", color: "text-[#d97706]" },
-  { footprint: "40W x 30D mm", height: "11–14 mm", lordosis: "6°–13°", plate: "40W x 11H mm", color: "text-[#9333ea]" },
-  { footprint: "40W x 30D mm", height: "13–16 mm", lordosis: "12°–19°", plate: "40W x 13H mm", color: "text-[#9333ea]" },
-  { footprint: "40W x 30D mm", height: "16–19 mm", lordosis: "18°–25°", plate: "40W x 16H mm", color: "text-[#9333ea]" },
+const footprints = [
+  { id: "26x34", label: "26D × 34W mm" },
+  { id: "28x37", label: "28D × 37W mm" },
+  { id: "30x40", label: "30D × 40W mm" },
+];
+
+const sizingTiers = [
+  {
+    label: "11mm",
+    sub: "Short",
+    heightText: "11-14mm",
+    heightLeft: "0%",
+    heightWidth: "37.5%",
+    lordosisText: "6° - 13°",
+    lordosisLeft: "0%",
+    lordosisWidth: "36.8%",
+    barColor: "bg-[#38bdf8]",
+  },
+  {
+    label: "13mm",
+    sub: "Medium",
+    heightText: "13-16mm",
+    heightLeft: "25%",
+    heightWidth: "37.5%",
+    lordosisText: "12° - 19°",
+    lordosisLeft: "31.5%",
+    lordosisWidth: "36.8%",
+    barColor: "bg-[#0ea5e9]",
+  },
+  {
+    label: "16mm",
+    sub: "Tall",
+    heightText: "16-19mm",
+    heightLeft: "62.5%",
+    heightWidth: "37.5%",
+    lordosisText: "18° - 25°",
+    lordosisLeft: "63.1%",
+    lordosisWidth: "36.8%",
+    barColor: "bg-[#0284c7]",
+  },
 ];
 
 const specs = [
   {
     title: "Anterior Lumbar Plate",
-    image: "SaberXA-Images-Oct2026-09",
-    lines: ["Footprints: 34, 37, 40 mm"],
+    image: "NASS_HERO_IMAGES-05",
+    lines: ["Zero-profile", "34, 37, 40mm widths"],
   },
   {
     title: "Spikes",
-    image: "SaberXA-Images-Oct2026-10",
-    lines: ["Diameter: 5.0 mm", "Lengths: 20, 22.5, 25 mm"],
+    image: "NASS_HERO_IMAGES-09",
+    lines: ["5.0mm diameter", "20, 22.5, 25mm lengths"],
   },
   {
     title: "Screws",
-    image: "SaberXA-Images-Oct2026-11",
-    lines: ["Diameters: 5.0 and 5.5 mm", "Lengths: 20–35 mm, 2.5 mm increments"],
+    image: "NASS_HERO_IMAGES-08",
+    lines: ["5.0 & 5.5mm diameters", "20-35mm lengths, 2.5mm increments"],
   },
 ];
 
@@ -98,7 +124,7 @@ function ExpandableInterbodyShowcase() {
             <button
               type="button"
               onClick={() => setIsExpanded(false)}
-              className={`px-4 py-2 rounded-[4px] font-heading text-[13px] font-semibold transition-all cursor-pointer ${
+              className={`px-5 py-2.5 rounded-[4px] font-heading text-[13px] font-semibold transition-all cursor-pointer ${
                 !isExpanded ? "bg-[#2ac4f4] text-[#0a0e17] shadow-sm" : "text-white/70 hover:text-white"
               }`}
             >
@@ -107,7 +133,7 @@ function ExpandableInterbodyShowcase() {
             <button
               type="button"
               onClick={() => setIsExpanded(true)}
-              className={`px-4 py-2 rounded-[4px] font-heading text-[13px] font-semibold transition-all cursor-pointer ${
+              className={`px-5 py-2.5 rounded-[4px] font-heading text-[13px] font-semibold transition-all cursor-pointer ${
                 isExpanded ? "bg-[#2ac4f4] text-[#0a0e17] shadow-sm" : "text-white/70 hover:text-white"
               }`}
             >
@@ -118,31 +144,142 @@ function ExpandableInterbodyShowcase() {
 
         {/* Visual showcase */}
         <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-[10px] bg-[#070b14]/90 border border-white/10 overflow-hidden flex items-center justify-center p-6 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-          <div className="relative w-full max-w-[700px] h-full flex items-center justify-center">
+          <div className="relative w-full max-w-[760px] h-full flex items-center justify-center">
             {/* Collapsed Image */}
             <img
-              src={cldImage("SaberXA-Images-Oct2026-02", 1400)}
-              alt="Saber-XA collapsed interbody"
+              src={cldImage("NASS_HERO_IMAGES-11", 1400)}
+              alt="Saber-XA collapsed interbody lateral view"
               className={`absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-in-out ${
-                !isExpanded ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.15)]" : "opacity-0 scale-95 pointer-events-none"
+                !isExpanded
+                  ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.18)]"
+                  : "opacity-0 scale-95 pointer-events-none"
               }`}
             />
             {/* Expanded Image */}
             <img
-              src={cldImage("SaberXA-Images-Oct2026-03", 1400)}
-              alt="Saber-XA expanded interbody"
+              src={cldImage("NASS_HERO_IMAGES-10", 1400)}
+              alt="Saber-XA expanded interbody lateral view"
               className={`absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-in-out ${
-                isExpanded ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.25)]" : "opacity-0 scale-105 pointer-events-none"
+                isExpanded
+                  ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.28)]"
+                  : "opacity-0 scale-105 pointer-events-none"
               }`}
             />
           </div>
 
-          <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-[4px] border border-white/10">
+          <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-[4px] border border-white/10">
             <span className={`w-2 h-2 rounded-full ${isExpanded ? "bg-[#2ac4f4] animate-pulse" : "bg-white/40"}`} />
             <span className="font-mono text-[11px] uppercase tracking-wider text-white/90">
               State: <strong className="text-[#2ac4f4]">{isExpanded ? "Expanded" : "Collapsed"}</strong>
             </span>
           </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function SizingSection() {
+  const [activeFootprint, setActiveFootprint] = useState("26x34");
+
+  return (
+    <section className={`bg-white ${sectionPad} border-t border-black/[0.06]`}>
+      <div className="max-w-[1200px] mx-auto">
+        <h2 className="font-heading font-extrabold text-[#0a0e17] text-[32px] md:text-[44px] tracking-[0.18em] uppercase mb-4">
+          SIZING
+        </h2>
+
+        {/* Footprint Selector Bar */}
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 pb-8 border-b border-black/[0.08]">
+          <div className="flex items-center gap-4 flex-wrap">
+            <span className="font-mono font-bold uppercase tracking-[0.18em] text-[12px] md:text-[13px] text-[#0891b2]">
+              FOOTPRINTS
+            </span>
+            <span className="text-[#64748b] text-[14px] md:text-[15px]">
+              Each footprint comes in three starting heights. Each one expands across its own range.
+            </span>
+          </div>
+
+          <div className="flex items-center gap-3 flex-wrap">
+            {footprints.map((fp) => {
+              const isSelected = activeFootprint === fp.id;
+              return (
+                <button
+                  key={fp.id}
+                  type="button"
+                  onClick={() => setActiveFootprint(fp.id)}
+                  className={`px-5 py-2.5 rounded-full font-heading text-[14px] md:text-[15px] font-bold transition-all cursor-pointer ${
+                    isSelected
+                      ? "border-2 border-[#0284c7] text-[#0284c7] bg-[#0284c7]/5 shadow-sm"
+                      : "border border-slate-300 text-slate-700 hover:border-slate-400 bg-white"
+                  }`}
+                >
+                  {fp.label}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Range Chart */}
+        <div className="mt-10 bg-white rounded-[12px] p-4 md:p-8">
+          {/* Header Row */}
+          <div className="grid grid-cols-12 gap-4 pb-4 mb-4 border-b border-black/[0.06] font-mono text-[12px] uppercase tracking-wider text-[#64748b]">
+            <div className="col-span-3 md:col-span-2"></div>
+            <div className="col-span-4 md:col-span-5 flex justify-between items-center pr-2">
+              <span className="font-bold text-[#0a0e17]">HEIGHT</span>
+              <span className="font-semibold text-[#0284c7]">11-19mm</span>
+            </div>
+            <div className="col-span-5 md:col-span-5 flex justify-between items-center pr-2">
+              <span className="font-bold text-[#0a0e17]">LORDOSIS</span>
+              <span className="font-semibold text-[#0284c7]">6° - 25°</span>
+            </div>
+          </div>
+
+          {/* Rows for Heights */}
+          <div className="space-y-6">
+            {sizingTiers.map((tier) => (
+              <div key={tier.label} className="grid grid-cols-12 gap-4 items-center">
+                {/* Row Label */}
+                <div className="col-span-3 md:col-span-2">
+                  <div className="font-heading font-bold text-[#0a0e17] text-[16px] md:text-[18px] leading-tight">
+                    {tier.label}
+                  </div>
+                  <div className="font-sans text-[#64748b] text-[12px] md:text-[13px]">
+                    {tier.sub}
+                  </div>
+                </div>
+
+                {/* Height Track */}
+                <div className="col-span-4 md:col-span-5">
+                  <div className="bg-[#e2e8f0] h-9 md:h-10 rounded-full relative overflow-hidden flex items-center p-1">
+                    <div
+                      style={{ left: tier.heightLeft, width: tier.heightWidth }}
+                      className={`absolute ${tier.barColor} h-7 md:h-8 rounded-full flex items-center justify-center text-white font-heading font-bold text-[12px] md:text-[13px] shadow-sm transition-all duration-500`}
+                    >
+                      {tier.heightText}
+                    </div>
+                  </div>
+                </div>
+
+                {/* Lordosis Track */}
+                <div className="col-span-5 md:col-span-5">
+                  <div className="bg-[#e2e8f0] h-9 md:h-10 rounded-full relative overflow-hidden flex items-center p-1">
+                    <div
+                      style={{ left: tier.lordosisLeft, width: tier.lordosisWidth }}
+                      className={`absolute ${tier.barColor} h-7 md:h-8 rounded-full flex items-center justify-center text-white font-heading font-bold text-[12px] md:text-[13px] shadow-sm transition-all duration-500`}
+                    >
+                      {tier.lordosisText}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <p className="font-sans text-[13px] text-[#64748b] mt-8">
+            Bars run from collapsed to fully expanded.
+          </p>
         </div>
       </div>
     </section>
@@ -162,18 +299,33 @@ export default function SaberXADetail() {
         <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <ProductLockup lockup={XA.lockup} descriptor={XA.descriptor} as="h1" size="lg" dark />
-            <p className="text-white/80 text-[16px] md:text-[18px] leading-relaxed mt-6 max-w-[560px]">
-              Saber-XA lets surgeons dial in height, lordosis or both through a single inserter.
-            </p>
+
+            {/* Feature card matching mockup */}
+            <div className="mt-8 bg-black/40 border border-white/10 rounded-[10px] overflow-hidden divide-y divide-white/10 backdrop-blur-sm max-w-[560px]">
+              {heroFeatures.map((f) => (
+                <div key={f.title} className="p-4 md:py-3.5 md:px-5">
+                  <h3 className="font-heading font-bold text-white text-[15px] md:text-[16px]">
+                    {f.title}
+                  </h3>
+                  {f.desc && (
+                    <p className="text-white/70 text-[13px] md:text-[14px] mt-0.5">
+                      {f.desc}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+
             <div className="flex flex-wrap gap-3 mt-8">
               <PrimaryButton to={contactHref("xa")}>Request Information</PrimaryButton>
             </div>
           </div>
-          <div className="relative bg-[#0f1520] border border-white/10 rounded-[10px] overflow-hidden p-6 aspect-[4/3] flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+
+          <div className="relative bg-[#0f1520] border border-white/10 rounded-[10px] overflow-hidden p-6 md:p-10 aspect-[4/3] flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
             <img
-              src={cldImage("SaberXA-Images-Oct2026-01", 1600)}
-              alt="Saber-XA™ interbody with spikes"
-              className="w-full h-auto object-contain filter drop-shadow-[0_20px_40px_rgba(42,196,244,0.2)]"
+              src={cldImage("NASS_HERO_IMAGES-02", 1600)}
+              alt="Saber-XA™ expandable ALIF system render"
+              className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(42,196,244,0.25)]"
             />
           </div>
         </div>
@@ -182,33 +334,10 @@ export default function SaberXADetail() {
       {/* 2. Expandable Interbody sequence */}
       <ExpandableInterbodyShowcase />
 
-      {/* 3. System Overview: 4 numbered cards */}
+      {/* 3. Photo row */}
       <section className={`bg-white ${sectionPad}`}>
         <div className="max-w-[1400px] mx-auto">
-          <h2 className="font-heading font-bold text-[#0a0e17] text-[30px] md:text-[40px] tracking-tight mb-10">
-            System Overview
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {overviewCards.map((c) => (
-              <div
-                key={c.num}
-                className="bg-[#f8fafc] border-t-2 border-t-[#0891b2] border-x border-b border-black/[0.06] rounded-[8px] p-6 md:p-8 flex flex-col shadow-sm"
-              >
-                <span className="font-heading font-bold text-[28px] md:text-[32px] text-[#0891b2] tracking-tight mb-3">
-                  {c.num}
-                </span>
-                <h3 className="font-heading font-bold text-[#0a0e17] text-[18px] mb-3">
-                  {c.title}
-                </h3>
-                <p className="font-sans text-[#4a5568] text-[14px] md:text-[15px] leading-relaxed">
-                  {c.body}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* Photo row under the cards (3 photos: X3, X4, X5) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {photoRow.map((p) => (
               <figure key={p.caption}>
                 <div className="lift relative bg-[#0f1520] rounded-[8px] aspect-[16/10] overflow-hidden">
@@ -228,83 +357,34 @@ export default function SaberXADetail() {
         </div>
       </section>
 
-      {/* 4. Sizing Table */}
-      <section className={`bg-[#f8fafc] ${sectionPad} border-t border-black/[0.06]`}>
-        <div className="max-w-[1200px] mx-auto">
-          <h2 className="font-heading font-bold text-[#0a0e17] text-[26px] md:text-[34px] tracking-tight mb-8">
-            Nine sizes cover 11 to 19 mm heights and 6° to 25° lordosis
-          </h2>
-          <div className="bg-white border border-black/[0.08] rounded-[8px] shadow-sm overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left border-collapse">
-                <thead>
-                  <tr className="border-b border-black/[0.08] bg-[#f1f5f9]">
-                    <th className="py-4 px-6 font-mono font-semibold text-[12px] uppercase tracking-wider text-[#0891b2]">
-                      Footprint
-                    </th>
-                    <th className="py-4 px-6 font-mono font-semibold text-[12px] uppercase tracking-wider text-[#0891b2]">
-                      Height
-                    </th>
-                    <th className="py-4 px-6 font-mono font-semibold text-[12px] uppercase tracking-wider text-[#0891b2]">
-                      Lordosis
-                    </th>
-                    <th className="py-4 px-6 font-mono font-semibold text-[12px] uppercase tracking-wider text-[#0891b2]">
-                      Plate
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y divide-black/[0.05] font-sans text-[14px] md:text-[15px]">
-                  {sizingData.map((row, idx) => (
-                    <tr key={idx} className="hover:bg-[#2ac4f4]/[0.03] transition-colors">
-                      <td className={`py-3.5 px-6 font-heading font-bold ${row.color}`}>
-                        {row.footprint}
-                      </td>
-                      <td className="py-3.5 px-6 text-[#1a2535]">
-                        {row.height}
-                      </td>
-                      <td className="py-3.5 px-6 text-[#1a2535]">
-                        {row.lordosis}
-                      </td>
-                      <td className="py-3.5 px-6 text-[#475569]">
-                        {row.plate}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* 4. Sizing Range Section */}
+      <SizingSection />
 
       {/* 5. Specifications: 3 cards */}
-      <section className={`bg-white ${sectionPad}`}>
+      <section className="bg-white px-6 md:px-12 lg:px-16 py-16 md:py-20 border-t border-black/[0.06]">
         <div className="max-w-[1200px] mx-auto">
-          <h2 className="font-heading font-bold text-[#0a0e17] text-[30px] md:text-[40px] tracking-tight mb-10">
-            Specifications
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {specs.map((s) => (
               <div
                 key={s.title}
-                className="lift bg-white border border-black/[0.08] hover:border-[#2ac4f4]/40 rounded-[8px] overflow-hidden flex flex-col shadow-sm"
+                className="lift bg-white border border-black/[0.08] hover:border-[#2ac4f4]/40 rounded-[10px] overflow-hidden flex flex-col p-6 shadow-sm"
               >
-                <div className="relative bg-[#0f1520] aspect-[4/3] p-4 flex items-center justify-center">
+                <div className="relative bg-[#f8fafc] rounded-[8px] aspect-[4/3] mb-5 flex items-center justify-center p-6">
                   <img
                     src={cldImage(s.image, 700)}
                     alt={s.title}
                     loading="lazy"
-                    className="w-full h-full object-contain p-2"
+                    className="w-full h-full object-contain filter drop-shadow-sm"
                   />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-heading font-bold text-[#0a0e17] text-[18px] mb-2">{s.title}</h3>
-                  {s.lines.map((l) => (
-                    <p key={l} className="text-[#4a5568] text-[14px] leading-relaxed">
-                      {l}
-                    </p>
-                  ))}
-                </div>
+                <h3 className="font-heading font-bold text-[#0a0e17] text-[19px] md:text-[20px] mb-2">
+                  {s.title}
+                </h3>
+                {s.lines.map((l) => (
+                  <p key={l} className="text-[#64748b] text-[14px] md:text-[15px] leading-relaxed">
+                    {l}
+                  </p>
+                ))}
               </div>
             ))}
           </div>
@@ -312,11 +392,16 @@ export default function SaberXADetail() {
       </section>
 
       {/* 6. Indications and Safety box */}
-      <section className="bg-[#f8fafc] px-6 md:px-12 lg:px-16 py-12 border-t border-black/[0.06]">
-        <div className="max-w-[1200px] mx-auto bg-white border-l-4 border-l-[#0891b2] border border-black/[0.08] rounded-[6px] p-6 md:p-8 shadow-sm">
-          <h3 className="font-mono font-bold uppercase tracking-[0.15em] text-[12px] md:text-[13px] text-[#0891b2] mb-4">
-            INDICATIONS AND SAFETY
-          </h3>
+      <section className="bg-white px-6 md:px-12 lg:px-16 py-12 border-t border-black/[0.06]">
+        <div className="max-w-[1200px] mx-auto bg-[#f8fafc] border-l-4 border-l-[#0891b2] border border-black/[0.08] rounded-[6px] p-6 md:p-8 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <h3 className="font-mono font-bold uppercase tracking-[0.15em] text-[12px] md:text-[13px] text-[#0891b2]">
+              INDICATIONS AND SAFETY
+            </h3>
+            <span className="font-mono text-[11px] text-[#94a3b8]">
+              MKT-024 REV A
+            </span>
+          </div>
           <ul className="space-y-2.5 text-[#334155] text-[13px] md:text-[14px] leading-relaxed list-disc list-inside">
             <li>
               Indicated for intervertebral fusion in patients with degenerative disc disease at one or two contiguous levels, L1 to S1.
@@ -331,7 +416,7 @@ export default function SaberXADetail() {
         </div>
       </section>
 
-      {/* 7. Closing call to action */}
+      {/* 8. Closing call to action */}
       <ClosingCta product="xa" />
     </div>
   );

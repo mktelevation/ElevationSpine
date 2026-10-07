@@ -14,12 +14,23 @@ import {
 
 const ANIMATION = "SaberC-FinalAnimation_na701a";
 
-const specs = [
-  { label: "Footprints", value: ["12 x 15 mm", "14 x 17 mm"] },
-  { label: "Heights", value: ["5–9 mm*"] },
-  { label: "Lordosis", value: ["6° and 12°"] },
-  { label: "Screws", value: ["12, 14, 16, 18, 20 mm"] },
-  { label: "Spikes", value: ["Standard and Long"] },
+const features = [
+  {
+    title: "Porous Titanium Architecture",
+    desc: "3D-printed titanium interbody with 55% porosity.*",
+  },
+  {
+    title: "6° and 12° Lordosis",
+    desc: "Two lordotic options across both footprints.",
+  },
+  {
+    title: "In-line Spike + Screw Fixation",
+    desc: "Pre-loaded in-line spikes or screws. Both in one tray.",
+  },
+  {
+    title: "Zero-profile Anterior Cervical Plate",
+    desc: "",
+  },
 ];
 
 const sectionPad = "px-6 md:px-12 lg:px-16 py-20 md:py-24";
@@ -38,11 +49,11 @@ export default function SaberCDetail() {
           <div>
             <ProductLockup lockup={AVIA.lockup} descriptor={AVIA.descriptor} as="h1" size="lg" dark />
 
-            {/* Backdrop bullet points */}
-            <ul className="flex flex-col gap-3 mt-8">
+            {/* Bullets */}
+            <ul className="flex flex-col gap-3.5 mt-8">
               {AVIA.bullets.map((b) => (
                 <li key={b} className="flex items-center gap-3 font-sans text-white/90 text-[16px] md:text-[18px]">
-                  <span className="w-2 h-2 rounded-[2px] bg-[#2ac4f4] shrink-0" />
+                  <span className="w-2 h-2 rounded-full bg-[#2ac4f4] shrink-0" />
                   <span>{b}</span>
                 </li>
               ))}
@@ -54,11 +65,11 @@ export default function SaberCDetail() {
           </div>
 
           <div>
-            <div className="relative bg-[#0f1520] border border-white/10 rounded-[10px] overflow-hidden p-6 aspect-[4/3] flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="relative bg-[#0f1520] border border-white/10 rounded-[10px] overflow-hidden p-6 md:p-10 aspect-[4/3] flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
               <img
-                src={cldImage("SaberCA-Images-Oct2026-01", 1600)}
-                alt="Saber-C® | AVIA™ labeled system diagram"
-                className="w-full h-full object-contain filter drop-shadow-[0_15px_35px_rgba(42,196,244,0.2)]"
+                src={cldImage("NASS_HERO_IMAGES-01", 1600)}
+                alt="Saber-C® | AVIA™ system render"
+                className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(42,196,244,0.25)]"
               />
             </div>
             <SpikeDisclaimer dark className="mt-3 text-center" />
@@ -66,121 +77,128 @@ export default function SaberCDetail() {
         </div>
       </section>
 
-      {/* 2. System Overview: Three image cards with chip text as caption */}
-      <section className={`bg-white ${sectionPad}`}>
-        <div className="max-w-[1400px] mx-auto">
-          <h2 className="font-heading font-bold text-[#0a0e17] text-[30px] md:text-[40px] tracking-tight mb-10">
-            System Overview
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Card 1: Porous titanium architecture (A2) */}
-            <figure>
-              <div className="lift relative bg-[#0f1520] rounded-[8px] aspect-[4/3] overflow-hidden p-6 flex items-center justify-center gap-4">
-                <img
-                  src={cldImage("SaberCA-Images-Oct2026-04", 600)}
-                  alt="Porous titanium spacer 12x15"
-                  loading="lazy"
-                  className="w-1/2 h-full object-contain"
-                />
-                <img
-                  src={cldImage("SaberCA-Images-Oct2026-05", 600)}
-                  alt="Porous titanium spacer 14x17"
-                  loading="lazy"
-                  className="w-1/2 h-full object-contain"
-                />
-              </div>
-              <figcaption className="font-heading font-bold text-[#0a0e17] text-[16px] mt-3">
-                Porous titanium architecture
-              </figcaption>
-            </figure>
+      {/* 2. Feature List + Cervical Spine Vertebra Section */}
+      <section className={`bg-white ${sectionPad} overflow-hidden border-b border-black/[0.06]`}>
+        <div className="max-w-[1300px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          {/* Left Column: Feature Highlights */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="divide-y divide-black/[0.08] border-y border-black/[0.08]">
+              {features.map((f) => (
+                <div key={f.title} className="py-6 first:pt-4 last:pb-4">
+                  <h3 className="font-heading font-bold text-[#0a0e17] text-[20px] md:text-[22px] tracking-tight">
+                    {f.title}
+                  </h3>
+                  {f.desc && (
+                    <p className="text-[#64748b] text-[15px] md:text-[16px] mt-2 leading-relaxed">
+                      {f.desc}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
 
-            {/* Card 2: Spike + screw fixation options (A3) */}
-            <figure>
-              <div className="lift relative bg-[#0f1520] rounded-[8px] aspect-[4/3] overflow-hidden p-6 flex items-center justify-center gap-4">
-                <img
-                  src={cldImage("SaberCA-Images-Oct2026-06", 500)}
-                  alt="Screw"
-                  loading="lazy"
-                  className="w-1/3 h-full object-contain"
-                />
-                <img
-                  src={cldImage("SaberCA-Images-Oct2026-07", 500)}
-                  alt="Standard spike"
-                  loading="lazy"
-                  className="w-1/3 h-full object-contain"
-                />
-                <img
-                  src={cldImage("SaberCA-Images-Oct2026-08", 500)}
-                  alt="Long spike"
-                  loading="lazy"
-                  className="w-1/3 h-full object-contain"
-                />
-              </div>
-              <figcaption className="font-heading font-bold text-[#0a0e17] text-[16px] mt-3">
-                Spike + screw fixation options
-              </figcaption>
-            </figure>
-
-            {/* Card 3: Zero-profile anterior cervical plate (A4) */}
-            <figure>
-              <div className="lift relative bg-[#0f1520] rounded-[8px] aspect-[4/3] overflow-hidden p-6 flex items-center justify-center gap-4">
-                <img
-                  src={cldImage("SaberCA-Images-Oct2026-02", 600)}
-                  alt="Blue 12x15 plate"
-                  loading="lazy"
-                  className="w-1/2 h-full object-contain"
-                />
-                <img
-                  src={cldImage("SaberCA-Images-Oct2026-03", 600)}
-                  alt="Gold 14x17 plate"
-                  loading="lazy"
-                  className="w-1/2 h-full object-contain"
-                />
-              </div>
-              <figcaption className="font-heading font-bold text-[#0a0e17] text-[16px] mt-3">
-                Zero-profile anterior cervical plate
-              </figcaption>
-            </figure>
+          {/* Right Column: Cervical Vertebra In-Situ Visual */}
+          <div className="lg:col-span-6 relative flex items-center justify-center">
+            <div className="relative w-full aspect-[4/3] md:aspect-[16/11] rounded-[12px] overflow-hidden flex items-center justify-center">
+              <img
+                src={cldImage("avia-hero-825-338", 1400)}
+                alt="Saber-C AVIA implanted into cervical spine"
+                className="w-full h-full object-cover object-[center_20%] scale-110 filter drop-shadow-md"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      {/* 3. See the System */}
+      {/* 3. System Components: 3 Cards */}
+      <section className={`bg-[#f8fafc] ${sectionPad}`}>
+        <div className="max-w-[1300px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 bg-white border border-black/[0.08] rounded-[10px] overflow-hidden divide-y md:divide-y-0 md:divide-x divide-black/[0.08] shadow-sm">
+            {/* Card 1: Porous Interbody */}
+            <div className="p-8 flex flex-col">
+              <div className="relative bg-[#f8fafc] rounded-[8px] aspect-[4/3] mb-6 flex items-center justify-center p-6">
+                <img
+                  src={cldImage("NASS_HERO_IMAGES-03", 800)}
+                  alt="Porous Interbody"
+                  loading="lazy"
+                  className="w-full h-full object-contain filter drop-shadow-sm"
+                />
+              </div>
+              <h3 className="font-heading font-bold text-[#0a0e17] text-[20px] mb-2">
+                Porous Interbody
+              </h3>
+              <p className="text-[#64748b] text-[15px] leading-relaxed">
+                12×15mm & 14×17mm
+              </p>
+              <p className="text-[#64748b] text-[15px] leading-relaxed">
+                5–9mm heights · 6° & 12°
+              </p>
+              <p className="italic text-[#94a3b8] text-[13px] leading-relaxed mt-4">
+                *12° interbodies are available only in heights of 6 to 9mm.
+              </p>
+            </div>
+
+            {/* Card 2: Anterior Cervical Plate */}
+            <div className="p-8 flex flex-col">
+              <div className="relative bg-[#f8fafc] rounded-[8px] aspect-[4/3] mb-6 flex items-center justify-center p-6">
+                <img
+                  src={cldImage("NASS_HERO_IMAGES-04", 800)}
+                  alt="Anterior Cervical Plate"
+                  loading="lazy"
+                  className="w-full h-full object-contain filter drop-shadow-sm"
+                />
+              </div>
+              <h3 className="font-heading font-bold text-[#0a0e17] text-[20px] mb-2">
+                Anterior Cervical Plate
+              </h3>
+              <p className="text-[#64748b] text-[15px] leading-relaxed">
+                Zero-profile
+              </p>
+            </div>
+
+            {/* Card 3: Spikes + Screws */}
+            <div className="p-8 flex flex-col">
+              <div className="relative bg-[#f8fafc] rounded-[8px] aspect-[4/3] mb-6 flex items-center justify-center p-4 gap-3">
+                <img
+                  src={cldImage("NASS_HERO_IMAGES-07", 500)}
+                  alt="Saber-C screw"
+                  loading="lazy"
+                  className="w-1/2 h-full object-contain filter drop-shadow-sm"
+                />
+                <img
+                  src={cldImage("NASS_HERO_IMAGES-06", 500)}
+                  alt="Saber-C spike"
+                  loading="lazy"
+                  className="w-1/2 h-full object-contain filter drop-shadow-sm"
+                />
+              </div>
+              <h3 className="font-heading font-bold text-[#0a0e17] text-[20px] mb-2">
+                Spikes + Screws
+              </h3>
+              <p className="text-[#64748b] text-[15px] leading-relaxed">
+                Spikes: 12mm & 14mm
+              </p>
+              <p className="text-[#64748b] text-[15px] leading-relaxed">
+                Screws: 12mm–20mm
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. See the System */}
       <section className={`bg-gradient-to-b from-[#070b14] to-[#0c1626] text-white ${sectionPad}`}>
         <div className="max-w-[1200px] mx-auto">
-          <h2 className="font-heading font-bold text-[30px] md:text-[40px] tracking-tight mb-8">See the System</h2>
+          <h2 className="font-heading font-bold text-[30px] md:text-[40px] tracking-tight mb-8">
+            See the System
+          </h2>
           <ClickToPlayVideo
             src={cldVideo(ANIMATION)}
             poster={cldPoster(ANIMATION, 40)}
             title="Saber-C AVIA product animation"
           />
           <SpikeDisclaimer dark className="mt-3 text-center" />
-        </div>
-      </section>
-
-      {/* 4. Specifications: 5 boxes */}
-      <section className={`bg-[#f8fafc] ${sectionPad}`}>
-        <div className="max-w-[1200px] mx-auto">
-          <h2 className="font-heading font-bold text-[#0a0e17] text-[30px] md:text-[40px] tracking-tight mb-10">
-            Specifications
-          </h2>
-          <div className="grid grid-cols-2 lg:grid-cols-5 bg-white border border-black/[0.08] rounded-[8px] overflow-hidden divide-y lg:divide-y-0 lg:divide-x divide-black/[0.08]">
-            {specs.map((s) => (
-              <div key={s.label} className="p-6 md:p-8 transition-colors duration-500 hover:bg-[#2ac4f4]/[0.04]">
-                <p className="font-mono font-semibold uppercase tracking-[0.15em] text-[12px] text-[#0891b2] mb-2">
-                  {s.label}
-                </p>
-                {s.value.map((val) => (
-                  <p key={val} className="font-heading font-bold text-[#0a0e17] text-[18px] md:text-[20px] leading-snug">
-                    {val}
-                  </p>
-                ))}
-              </div>
-            ))}
-          </div>
-          <p className="italic text-[#64748b] text-[13px] leading-relaxed mt-4">
-            *12° interbodies available in 6–9 mm heights only. When used with spikes, supplemental fixation is required.
-          </p>
         </div>
       </section>
 
@@ -193,7 +211,7 @@ export default function SaberCDetail() {
               <div className="relative bg-[#0f1520] rounded-[8px] aspect-[4/3] overflow-hidden mb-5 flex items-center justify-center p-4">
                 <img
                   src={cldImage("avia-hero-825-338", 900)}
-                  alt="Zero-Profile"
+                  alt="Zero-Profile multi-level spine construct"
                   loading="lazy"
                   className="w-full h-full object-contain"
                 />
@@ -277,7 +295,7 @@ export default function SaberCDetail() {
         </div>
       </section>
 
-      {/* Safety & IFU line */}
+      {/* 6. Safety & IFU line */}
       <section className="bg-[#f8fafc] border-t border-black/[0.06] px-6 md:px-12 py-8">
         <div className="max-w-[1400px] mx-auto text-center">
           <p className="text-[#64748b] text-[13px] md:text-[14px] leading-relaxed">
@@ -286,7 +304,7 @@ export default function SaberCDetail() {
         </div>
       </section>
 
-      {/* Closing call to action */}
+      {/* 7. Closing call to action */}
       <ClosingCta product="avia" />
     </div>
   );
