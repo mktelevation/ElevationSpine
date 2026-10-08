@@ -3,9 +3,8 @@ import { useSearchParams } from "react-router";
 import { CheckCircle2, ArrowRight, MapPin, Phone, Mail } from "lucide-react";
 import { ClickToPlayVideo, cldImage, cldPoster, cldVideo, usePageMeta } from "../components/site.tsx";
 
-// Zeke's recruitment video. TODO: replace with the final export (the current
-// file has a burned-in timecode) and add captions.
-const RECRUITMENT_VIDEO = "distributor-promotional-video";
+// Zeke's recruitment video without time stamp
+const RECRUITMENT_VIDEO = "v1791418778/Zeke-ONE_v2_HD";
 
 type Audience = "Distributor" | "Surgeon" | "ASC";
 

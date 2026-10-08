@@ -31,4 +31,11 @@ export const pressReleases: PressRelease[] = [
     url: "https://www.businesswire.com/news/home/20260622253536/en/Elevation-Spine-Surpasses-5000-Saber-C-Implantations-Marking-a-Significant-Milestone-for-Its-Integrated-Cervical-Fixation-Platform",
     image: "El_Spine_products-7_s0qshq",
   },
+  {
+    date: "September 19, 2022",
+    headline:
+      "Elevation Spine, Inc. Closes $11 Million Series B Financing",
+    url: "https://www.businesswire.com/news/home/20220919005163/en/Elevation-Spine-Inc.-Closes-%2411-Million-Series-B-Financing",
+    image: "Elevation-Logo-ForAnimations_xlwquh",
+  },
 ];

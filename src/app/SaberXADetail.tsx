@@ -142,36 +142,88 @@ function ExpandableInterbodyShowcase() {
           </div>
         </div>
 
-        {/* Visual showcase */}
-        <div className="relative aspect-[16/9] md:aspect-[21/9] rounded-[10px] bg-[#070b14]/90 border border-white/10 overflow-hidden flex items-center justify-center p-6 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-          <div className="relative w-full max-w-[760px] h-full flex items-center justify-center">
-            {/* Collapsed Image */}
-            <img
-              src={cldImage("NASS_HERO_IMAGES-11", 1400)}
-              alt="Saber-XA collapsed interbody lateral view"
-              className={`absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-in-out ${
-                !isExpanded
-                  ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.18)]"
-                  : "opacity-0 scale-95 pointer-events-none"
-              }`}
-            />
-            {/* Expanded Image */}
-            <img
-              src={cldImage("NASS_HERO_IMAGES-10", 1400)}
-              alt="Saber-XA expanded interbody lateral view"
-              className={`absolute inset-0 w-full h-full object-contain transition-all duration-700 ease-in-out ${
-                isExpanded
-                  ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.28)]"
-                  : "opacity-0 scale-105 pointer-events-none"
-              }`}
-            />
+        {/* Visual showcase: 2 images per state (front view + side view) */}
+        <div className="relative rounded-[12px] bg-[#070b14]/90 border border-white/10 overflow-hidden p-6 md:p-8 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+            {/* Front View Card */}
+            <div className="relative rounded-[8px] bg-white/[0.02] border border-white/5 p-6 flex flex-col items-center justify-between min-h-[300px] md:min-h-[360px]">
+              <div className="relative w-full flex-1 flex items-center justify-center min-h-[220px]">
+                {/* Collapsed Front View */}
+                <img
+                  src={cldImage("EXPANDABLE_COLLAPSED_FRONT_VIEW_ORTHO", 1000)}
+                  alt="Saber-XA collapsed anterior front view"
+                  className={`absolute max-w-full max-h-full object-contain transition-all duration-500 ease-in-out ${
+                    !isExpanded
+                      ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.18)]"
+                      : "opacity-0 scale-95 pointer-events-none"
+                  }`}
+                />
+                {/* Expanded Front View */}
+                <img
+                  src={cldImage("EXPANDABLE_EXPANDED_FRONT_VIEW", 1000)}
+                  alt="Saber-XA expanded anterior front view"
+                  className={`absolute max-w-full max-h-full object-contain transition-all duration-500 ease-in-out ${
+                    isExpanded
+                      ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.28)]"
+                      : "opacity-0 scale-105 pointer-events-none"
+                  }`}
+                />
+              </div>
+              <div className="mt-4 pt-3 w-full border-t border-white/5 flex items-center justify-between">
+                <span className="font-heading font-semibold text-[14px] text-white/90">
+                  Front View
+                </span>
+                <span className="font-mono text-[11px] uppercase tracking-wider text-[#2ac4f4]">
+                  {isExpanded ? "Expanded" : "Collapsed"}
+                </span>
+              </div>
+            </div>
+
+            {/* Side View Card */}
+            <div className="relative rounded-[8px] bg-white/[0.02] border border-white/5 p-6 flex flex-col items-center justify-between min-h-[300px] md:min-h-[360px]">
+              <div className="relative w-full flex-1 flex items-center justify-center min-h-[220px]">
+                {/* Collapsed Side View */}
+                <img
+                  src={cldImage("EXPANDABLE_SIDE_VIEW_COLLAPSED", 1000)}
+                  alt="Saber-XA collapsed lateral side view"
+                  className={`absolute max-w-full max-h-full object-contain transition-all duration-500 ease-in-out ${
+                    !isExpanded
+                      ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.18)]"
+                      : "opacity-0 scale-95 pointer-events-none"
+                  }`}
+                />
+                {/* Expanded Side View */}
+                <img
+                  src={cldImage("EXPANDABLE_EXPANDED_SIDE_VIEW", 1000)}
+                  alt="Saber-XA expanded lateral side view"
+                  className={`absolute max-w-full max-h-full object-contain transition-all duration-500 ease-in-out ${
+                    isExpanded
+                      ? "opacity-100 scale-100 filter drop-shadow-[0_15px_30px_rgba(42,196,244,0.28)]"
+                      : "opacity-0 scale-105 pointer-events-none"
+                  }`}
+                />
+              </div>
+              <div className="mt-4 pt-3 w-full border-t border-white/5 flex items-center justify-between">
+                <span className="font-heading font-semibold text-[14px] text-white/90">
+                  Side View
+                </span>
+                <span className="font-mono text-[11px] uppercase tracking-wider text-[#2ac4f4]">
+                  {isExpanded ? "Expanded" : "Collapsed"}
+                </span>
+              </div>
+            </div>
           </div>
 
-          <div className="absolute bottom-4 left-4 md:bottom-6 md:left-6 flex items-center gap-2 bg-black/60 backdrop-blur-md px-3.5 py-1.5 rounded-[4px] border border-white/10">
-            <span className={`w-2 h-2 rounded-full ${isExpanded ? "bg-[#2ac4f4] animate-pulse" : "bg-white/40"}`} />
-            <span className="font-mono text-[11px] uppercase tracking-wider text-white/90">
-              State: <strong className="text-[#2ac4f4]">{isExpanded ? "Expanded" : "Collapsed"}</strong>
-            </span>
+          <div className="mt-6 pt-4 border-t border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div className="flex items-center gap-2">
+              <span className={`w-2 h-2 rounded-full ${isExpanded ? "bg-[#2ac4f4] animate-pulse" : "bg-white/40"}`} />
+              <span className="font-mono text-[11px] uppercase tracking-wider text-white/90">
+                State: <strong className="text-[#2ac4f4]">{isExpanded ? "Expanded" : "Collapsed"}</strong>
+              </span>
+            </div>
+            <p className="font-sans text-[12px] text-white/50">
+              Front view and side view shown side by side in {isExpanded ? "expanded" : "collapsed"} state
+            </p>
           </div>
         </div>
       </div>
@@ -334,7 +386,10 @@ export default function SaberXADetail() {
       {/* 2. Expandable Interbody sequence */}
       <ExpandableInterbodyShowcase />
 
-      {/* 3. Photo row */}
+      {/* 3. Sizing Range Section */}
+      <SizingSection />
+
+      {/* 4. Photo row */}
       <section className={`bg-white ${sectionPad}`}>
         <div className="max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -356,9 +411,6 @@ export default function SaberXADetail() {
           </div>
         </div>
       </section>
-
-      {/* 4. Sizing Range Section */}
-      <SizingSection />
 
       {/* 5. Specifications: 3 cards */}
       <section className="bg-white px-6 md:px-12 lg:px-16 py-16 md:py-20 border-t border-black/[0.06]">
@@ -394,14 +446,9 @@ export default function SaberXADetail() {
       {/* 6. Indications and Safety box */}
       <section className="bg-white px-6 md:px-12 lg:px-16 py-12 border-t border-black/[0.06]">
         <div className="max-w-[1200px] mx-auto bg-[#f8fafc] border-l-4 border-l-[#0891b2] border border-black/[0.08] rounded-[6px] p-6 md:p-8 shadow-sm">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
-            <h3 className="font-mono font-bold uppercase tracking-[0.15em] text-[12px] md:text-[13px] text-[#0891b2]">
-              INDICATIONS AND SAFETY
-            </h3>
-            <span className="font-mono text-[11px] text-[#94a3b8]">
-              MKT-024 REV A
-            </span>
-          </div>
+          <h3 className="font-mono font-bold uppercase tracking-[0.15em] text-[12px] md:text-[13px] text-[#0891b2] mb-4">
+            INDICATIONS AND SAFETY
+          </h3>
           <ul className="space-y-2.5 text-[#334155] text-[13px] md:text-[14px] leading-relaxed list-disc list-inside">
             <li>
               Indicated for intervertebral fusion in patients with degenerative disc disease at one or two contiguous levels, L1 to S1.
