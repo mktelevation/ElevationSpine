@@ -235,10 +235,10 @@ export default function Partners() {
           <figure>
             <ClickToPlayVideo
               src={cldVideo(RECRUITMENT_VIDEO)}
-              poster={cldPoster(RECRUITMENT_VIDEO, 8)}
-              title="Partner with Elevation Spine: Zeke Isaacs, Sales"
+              poster={cldPoster(RECRUITMENT_VIDEO, 13)}
+              title="Partner with Elevation Spine: Zeke Isaacs, VP of Sales"
             />
-            <figcaption className="font-sans text-white/60 text-[14px] mt-3">Zeke Isaacs, Sales</figcaption>
+            <figcaption className="font-sans text-white/60 text-[14px] mt-3">Zeke Isaacs, VP of Sales</figcaption>
           </figure>
         </div>
       </section>

@@ -94,7 +94,7 @@ const specs = [
   {
     title: "Spikes",
     image: "NASS_HERO_IMAGES-09",
-    lines: ["5.0mm diameter", "20, 22.5, 25mm lengths"],
+    lines: ["5.0mm diameter", "20, 22.5, 25, 27.5, 30mm lengths"],
   },
   {
     title: "Screws",
@@ -237,7 +237,7 @@ function SizingSection() {
   return (
     <section className={`bg-white ${sectionPad} border-t border-black/[0.06]`}>
       <div className="max-w-[1200px] mx-auto">
-        <h2 className="font-heading font-extrabold text-[#0a0e17] text-[32px] md:text-[44px] tracking-[0.18em] uppercase mb-4">
+        <h2 className="font-heading font-extrabold text-[#0a0e17] text-[28px] sm:text-[36px] md:text-[44px] tracking-[0.14em] md:tracking-[0.18em] uppercase mb-4">
           SIZING
         </h2>
 
@@ -252,7 +252,7 @@ function SizingSection() {
             </span>
           </div>
 
-          <div className="flex items-center gap-3 flex-wrap">
+          <div className="grid grid-cols-3 gap-2 w-full sm:w-auto sm:flex sm:items-center sm:gap-3">
             {footprints.map((fp) => {
               const isSelected = activeFootprint === fp.id;
               return (
@@ -260,7 +260,7 @@ function SizingSection() {
                   key={fp.id}
                   type="button"
                   onClick={() => setActiveFootprint(fp.id)}
-                  className={`px-5 py-2.5 rounded-full font-heading text-[14px] md:text-[15px] font-bold transition-all cursor-pointer ${
+                  className={`px-3 sm:px-5 py-2.5 rounded-full font-heading text-[12px] sm:text-[14px] md:text-[15px] font-bold text-center transition-all cursor-pointer whitespace-nowrap ${
                     isSelected
                       ? "border-2 border-[#0284c7] text-[#0284c7] bg-[#0284c7]/5 shadow-sm"
                       : "border border-slate-300 text-slate-700 hover:border-slate-400 bg-white"
@@ -273,41 +273,93 @@ function SizingSection() {
           </div>
         </div>
 
-        {/* Range Chart */}
-        <div className="mt-10 bg-white rounded-[12px] p-4 md:p-8">
-          {/* Header Row */}
-          <div className="grid grid-cols-12 gap-4 pb-4 mb-4 border-b border-black/[0.06] font-mono text-[12px] uppercase tracking-wider text-[#64748b]">
-            <div className="col-span-3 md:col-span-2"></div>
-            <div className="col-span-4 md:col-span-5 flex justify-between items-center pr-2">
-              <span className="font-bold text-[#0a0e17]">HEIGHT</span>
-              <span className="font-semibold text-[#0284c7]">11-19mm</span>
+        {/* Range Chart Container */}
+        <div className="mt-8 md:mt-10 bg-white rounded-[12px] p-0 sm:p-4 md:p-8">
+          {/* Desktop & Tablet View (md and up) */}
+          <div className="hidden md:block">
+            {/* Header Row */}
+            <div className="grid grid-cols-12 gap-4 pb-4 mb-4 border-b border-black/[0.06] font-mono text-[12px] uppercase tracking-wider text-[#64748b]">
+              <div className="col-span-2"></div>
+              <div className="col-span-5 flex justify-between items-center pr-3">
+                <span className="font-bold text-[#0a0e17]">HEIGHT</span>
+                <span className="font-semibold text-[#0284c7] whitespace-nowrap">11-19mm</span>
+              </div>
+              <div className="col-span-5 flex justify-between items-center pr-3">
+                <span className="font-bold text-[#0a0e17]">LORDOSIS</span>
+                <span className="font-semibold text-[#0284c7] whitespace-nowrap">6° - 25°</span>
+              </div>
             </div>
-            <div className="col-span-5 md:col-span-5 flex justify-between items-center pr-2">
-              <span className="font-bold text-[#0a0e17]">LORDOSIS</span>
-              <span className="font-semibold text-[#0284c7]">6° - 25°</span>
+
+            {/* Rows for Heights */}
+            <div className="space-y-6">
+              {sizingTiers.map((tier) => (
+                <div key={tier.label} className="grid grid-cols-12 gap-4 items-center">
+                  {/* Row Label */}
+                  <div className="col-span-2">
+                    <div className="font-heading font-bold text-[#0a0e17] text-[18px] leading-tight">
+                      {tier.label}
+                    </div>
+                    <div className="font-sans text-[#64748b] text-[13px]">
+                      {tier.sub}
+                    </div>
+                  </div>
+
+                  {/* Height Track */}
+                  <div className="col-span-5">
+                    <div className="bg-[#e2e8f0] h-10 rounded-full relative overflow-hidden flex items-center p-1">
+                      <div
+                        style={{ left: tier.heightLeft, width: tier.heightWidth }}
+                        className={`absolute ${tier.barColor} h-8 rounded-full flex items-center justify-center text-white font-heading font-bold text-[13px] shadow-sm whitespace-nowrap transition-all duration-500`}
+                      >
+                        {tier.heightText}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Lordosis Track */}
+                  <div className="col-span-5">
+                    <div className="bg-[#e2e8f0] h-10 rounded-full relative overflow-hidden flex items-center p-1">
+                      <div
+                        style={{ left: tier.lordosisLeft, width: tier.lordosisWidth }}
+                        className={`absolute ${tier.barColor} h-8 rounded-full flex items-center justify-center text-white font-heading font-bold text-[13px] shadow-sm whitespace-nowrap transition-all duration-500`}
+                      >
+                        {tier.lordosisText}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* Rows for Heights */}
-          <div className="space-y-6">
+          {/* Mobile Card Layout (< md screens) */}
+          <div className="md:hidden space-y-4">
             {sizingTiers.map((tier) => (
-              <div key={tier.label} className="grid grid-cols-12 gap-4 items-center">
-                {/* Row Label */}
-                <div className="col-span-3 md:col-span-2">
-                  <div className="font-heading font-bold text-[#0a0e17] text-[16px] md:text-[18px] leading-tight">
-                    {tier.label}
+              <div key={tier.label} className="bg-[#f8fafc] border border-black/[0.08] rounded-[10px] p-4 shadow-sm">
+                <div className="flex items-baseline justify-between mb-3.5 pb-2 border-b border-black/[0.06]">
+                  <div className="flex items-baseline gap-2">
+                    <span className="font-heading font-bold text-[#0a0e17] text-[20px]">
+                      {tier.label}
+                    </span>
+                    <span className="font-sans font-medium text-[#64748b] text-[14px]">
+                      {tier.sub}
+                    </span>
                   </div>
-                  <div className="font-sans text-[#64748b] text-[12px] md:text-[13px]">
-                    {tier.sub}
-                  </div>
+                  <span className="font-mono text-[10px] text-[#0891b2] font-semibold uppercase tracking-wider">
+                    Starting Height
+                  </span>
                 </div>
 
                 {/* Height Track */}
-                <div className="col-span-4 md:col-span-5">
-                  <div className="bg-[#e2e8f0] h-9 md:h-10 rounded-full relative overflow-hidden flex items-center p-1">
+                <div className="mb-3.5">
+                  <div className="flex justify-between items-center text-[11px] font-mono uppercase tracking-wider mb-1.5">
+                    <span className="font-bold text-[#0a0e17]">Height (11–19mm)</span>
+                    <span className="font-bold text-[#0284c7]">{tier.heightText}</span>
+                  </div>
+                  <div className="bg-[#e2e8f0] h-9 rounded-full relative overflow-hidden flex items-center p-1">
                     <div
                       style={{ left: tier.heightLeft, width: tier.heightWidth }}
-                      className={`absolute ${tier.barColor} h-7 md:h-8 rounded-full flex items-center justify-center text-white font-heading font-bold text-[12px] md:text-[13px] shadow-sm transition-all duration-500`}
+                      className={`absolute ${tier.barColor} h-7 rounded-full flex items-center justify-center text-white font-heading font-bold text-[12px] shadow-sm whitespace-nowrap`}
                     >
                       {tier.heightText}
                     </div>
@@ -315,11 +367,15 @@ function SizingSection() {
                 </div>
 
                 {/* Lordosis Track */}
-                <div className="col-span-5 md:col-span-5">
-                  <div className="bg-[#e2e8f0] h-9 md:h-10 rounded-full relative overflow-hidden flex items-center p-1">
+                <div>
+                  <div className="flex justify-between items-center text-[11px] font-mono uppercase tracking-wider mb-1.5">
+                    <span className="font-bold text-[#0a0e17]">Lordosis (6°–25°)</span>
+                    <span className="font-bold text-[#0284c7]">{tier.lordosisText}</span>
+                  </div>
+                  <div className="bg-[#e2e8f0] h-9 rounded-full relative overflow-hidden flex items-center p-1">
                     <div
                       style={{ left: tier.lordosisLeft, width: tier.lordosisWidth }}
-                      className={`absolute ${tier.barColor} h-7 md:h-8 rounded-full flex items-center justify-center text-white font-heading font-bold text-[12px] md:text-[13px] shadow-sm transition-all duration-500`}
+                      className={`absolute ${tier.barColor} h-7 rounded-full flex items-center justify-center text-white font-heading font-bold text-[12px] shadow-sm whitespace-nowrap`}
                     >
                       {tier.lordosisText}
                     </div>
@@ -329,7 +385,7 @@ function SizingSection() {
             ))}
           </div>
 
-          <p className="font-sans text-[13px] text-[#64748b] mt-8">
+          <p className="font-sans text-[12px] sm:text-[13px] text-[#64748b] mt-6 md:mt-8">
             Bars run from collapsed to fully expanded.
           </p>
         </div>

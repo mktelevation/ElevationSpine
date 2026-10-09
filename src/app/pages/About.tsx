@@ -55,14 +55,14 @@ const teamMembers = [
   },
   {
     name: "Zeke Isaacs",
-    role: "Vice President, Sales & Distribution",
+    role: "Vice President, Sales",
     linkedin: "https://www.linkedin.com/in/zeke-isaacs-2ab70942/",
     image: "https://res.cloudinary.com/taboyyll/image/upload/f_auto,q_auto,w_800/v1785982840/Zeke_sbavfj.jpg",
     shortBio: "Commercial leader scaling national device distribution networks through clinical evidence and authentic surgeon relationships.",
     sections: [
       {
         title: "Background",
-        content: "Zeke Isaacs is Vice President of Sales & Distribution at Elevation Spine, leading all commercial operations, distributor relationships, and market expansion initiatives. With extensive experience in spine device sales and distribution management, Zeke understands the dynamics of surgeon adoption, distributor incentives, and the critical role that product training and clinical support play in successful device launches. He is responsible for recruiting, training, and supporting the surgeon and distributor network that brings Elevation Spine's innovative implant systems to operating rooms across the country."
+        content: "Zeke Isaacs is Vice President of Sales at Elevation Spine, leading all commercial operations, distributor relationships, and market expansion initiatives. With extensive experience in spine device sales and distribution management, Zeke understands the dynamics of surgeon adoption, distributor incentives, and the critical role that product training and clinical support play in successful device launches. He is responsible for recruiting, training, and supporting the surgeon and distributor network that brings Elevation Spine's innovative implant systems to operating rooms across the country."
       },
       {
         title: "Professional Background",
@@ -75,15 +75,15 @@ const teamMembers = [
     ]
   },
   {
-    name: "Jim Steinkotter",
-    role: "Vice President, Operations (COO)",
+    name: "Jim Steinkoetter",
+    role: "Vice President, Operations",
     linkedin: "https://www.linkedin.com/in/jimsteinkoetter/",
     image: "https://res.cloudinary.com/taboyyll/image/upload/f_auto,q_auto,w_800/v1785982845/Jim_rkea1f.jpg",
     shortBio: "Operational expert scaling supply chain and manufacturing operations with nearly 20 years of medical device experience.",
     sections: [
       {
         title: "Background",
-        content: "Jim Steinkotter serves as Vice President of Operations for Elevation Spine, providing executive leadership across operations, supply chain, IT, human resources, sales operations, and strategic business initiatives. He is responsible for building the operational capabilities that support the company's continued growth while ensuring the highest standards of quality, compliance, and customer service. With nearly 20 years of leadership experience in the medical device industry, Jim brings a proven track record of scaling operations in high-growth environments."
+        content: "Jim Steinkoetter serves as Vice President of Operations for Elevation Spine, providing executive leadership across operations, supply chain, IT, human resources, sales operations, and strategic business initiatives. He is responsible for building the operational capabilities that support the company's continued growth while ensuring the highest standards of quality, compliance, and customer service. With nearly 20 years of leadership experience in the medical device industry, Jim brings a proven track record of scaling operations in high-growth environments."
       },
       {
         title: "Professional Background",
@@ -222,7 +222,7 @@ export default function About() {
             </h2>
             <ClickToPlayVideo
               src={cldVideo(CEO_VIDEO)}
-              poster="https://res.cloudinary.com/taboyyll/image/upload/b_rgb:0a0e17,c_pad,h_900,w_1600/Elevation-Logo-ForAnimations_xlwquh.svg"
+              poster={cldPoster(CEO_VIDEO, 14)}
               title="Charlie Gilbride, Founder, President and CEO of Elevation Spine"
             />
           </div>
