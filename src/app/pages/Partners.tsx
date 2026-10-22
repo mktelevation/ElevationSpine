@@ -4,7 +4,7 @@ import { CheckCircle2, ArrowRight, MapPin, Phone, Mail } from "lucide-react";
 import { ClickToPlayVideo, cldImage, cldPoster, cldVideo, usePageMeta } from "../components/site.tsx";
 
 // Zeke's recruitment video without time stamp
-const RECRUITMENT_VIDEO = "v1791418778/Zeke-ONE_v2_HD";
+const RECRUITMENT_VIDEO = "v1792684518/Zeke-ONE_v2B-HD";
 
 type Audience = "Distributor" | "Surgeon" | "ASC";
 
