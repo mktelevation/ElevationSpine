@@ -1,3 +1,5 @@
+import { Link } from "react-router";
+import { FileText, ExternalLink } from "lucide-react";
 import {
   AVIA,
   ClickToPlayVideo,
@@ -296,11 +298,38 @@ export default function SaberCDetail() {
       </section>
 
       {/* 6. Safety & IFU line */}
-      <section className="bg-[#f8fafc] border-t border-black/[0.06] px-6 md:px-12 py-8">
-        <div className="max-w-[1400px] mx-auto text-center">
+      <section className="bg-[#f8fafc] border-t border-black/[0.06] px-6 md:px-12 py-10">
+        <div className="max-w-[1200px] mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <p className="text-[#64748b] text-[13px] md:text-[14px] leading-relaxed">
-            Please refer to the Saber-C IFU for indications, contraindications, warnings, and precautions.
+            Please refer to the{" "}
+            <a
+              href="/ifu/saber-c-avia-ifu.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#0891b2] font-semibold underline underline-offset-2 hover:text-[#0a0e17] transition-colors"
+            >
+              Saber-C AVIA IFU (LBL-SC0119 Rev. E)
+            </a>{" "}
+            for complete indications, contraindications, warnings, and precautions.
           </p>
+          <div className="flex items-center gap-3 self-start sm:self-auto shrink-0">
+            <a
+              href="/ifu/saber-c-avia-ifu.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-white border border-slate-300 hover:border-[#0891b2] text-[#0a0e17] hover:text-[#0891b2] px-4 py-2 rounded-[4px] font-heading font-semibold text-[13px] transition-colors shadow-sm"
+            >
+              <FileText className="w-4 h-4 text-[#0891b2]" />
+              View IFU (PDF)
+              <ExternalLink className="w-3.5 h-3.5 opacity-70" />
+            </a>
+            <Link
+              to="/ifu#saber-c"
+              className="text-[#0891b2] hover:text-[#0a0e17] font-heading font-semibold text-[13px] transition-colors"
+            >
+              eIFU Hub →
+            </Link>
+          </div>
         </div>
       </section>
 

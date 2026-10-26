@@ -15,7 +15,7 @@ function ProductCard({ product, spikeNote = false }: { product: typeof AVIA; spi
       <div className="p-8 md:p-10 flex flex-col flex-1">
         {spikeNote && <SpikeDisclaimer className="-mt-3 mb-6" />}
         <ProductLockup lockup={product.lockup} descriptor={product.descriptor} />
-        <ul className="flex flex-col gap-3 mt-6">
+        <ul className="flex flex-col gap-3 mt-6 mb-8">
           {product.bullets.map((b) => (
             <li key={b} className="flex items-start gap-3 font-sans text-[#1a2535] text-[15px] font-medium">
               <CheckCircle2 className="w-5 h-5 text-[#2ac4f4] shrink-0 mt-0.5" />
@@ -23,7 +23,6 @@ function ProductCard({ product, spikeNote = false }: { product: typeof AVIA; spi
             </li>
           ))}
         </ul>
-        <p className="font-sans text-[#4a5568] text-[15px] md:text-[16px] leading-relaxed mt-6 mb-8">{product.sentence}</p>
         <Link
           to={product.href}
           className="btn-lift mt-auto self-start inline-flex items-center gap-2 bg-[#2ac4f4] text-[#0a0e17] font-heading font-bold text-[14px] px-7 py-3.5 rounded-[4px] hover:bg-[#6ecff4] transition-colors shadow-[0_6px_20px_rgba(42,196,244,0.3)]"

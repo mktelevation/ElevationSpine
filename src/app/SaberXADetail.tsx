@@ -1,13 +1,20 @@
 import { useState } from "react";
+import { Link } from "react-router";
+import { FileText, ExternalLink } from "lucide-react";
 import {
   XA,
+  ClickToPlayVideo,
   ClosingCta,
   PrimaryButton,
   ProductLockup,
   cldImage,
+  cldPoster,
+  cldVideo,
   contactHref,
   usePageMeta,
 } from "./components/site.tsx";
+
+const ANIMATION = "SABER-XA_Anatomical_IFU_no-fixation-endcard";
 
 const heroFeatures = [
   {
@@ -44,9 +51,21 @@ const photoRow = [
 ];
 
 const footprints = [
-  { id: "26x34", label: "26D × 34W mm" },
-  { id: "28x37", label: "28D × 37W mm" },
-  { id: "30x40", label: "30D × 40W mm" },
+  {
+    id: "26x34",
+    label: "26D × 34W mm",
+    colorClass: "border-2 border-[#0284c7] text-[#0284c7] bg-[#0284c7]/5",
+  },
+  {
+    id: "28x37",
+    label: "28D × 37W mm",
+    colorClass: "border-2 border-[#d97706] text-[#d97706] bg-[#d97706]/5",
+  },
+  {
+    id: "30x40",
+    label: "30D × 40W mm",
+    colorClass: "border-2 border-[#9333ea] text-[#9333ea] bg-[#9333ea]/5",
+  },
 ];
 
 const sizingTiers = [
@@ -160,7 +179,7 @@ function ExpandableInterbodyShowcase() {
                 />
                 {/* Expanded Front View */}
                 <img
-                  src={cldImage("EXPANDABLE_EXPANDED_FRONT_VIEW", 1000)}
+                  src={cldImage("v1793050697/EXPANDABLE_EXPANDED_FRONT_VIEW", 1000)}
                   alt="Saber-XA expanded anterior front view"
                   className={`absolute max-w-full max-h-full object-contain transition-all duration-500 ease-in-out ${
                     isExpanded
@@ -232,8 +251,6 @@ function ExpandableInterbodyShowcase() {
 }
 
 function SizingSection() {
-  const [activeFootprint, setActiveFootprint] = useState("26x34");
-
   return (
     <section className={`bg-white ${sectionPad} border-t border-black/[0.06]`}>
       <div className="max-w-[1200px] mx-auto">
@@ -253,23 +270,14 @@ function SizingSection() {
           </div>
 
           <div className="grid grid-cols-3 gap-2 w-full sm:w-auto sm:flex sm:items-center sm:gap-3">
-            {footprints.map((fp) => {
-              const isSelected = activeFootprint === fp.id;
-              return (
-                <button
-                  key={fp.id}
-                  type="button"
-                  onClick={() => setActiveFootprint(fp.id)}
-                  className={`px-3 sm:px-5 py-2.5 rounded-full font-heading text-[12px] sm:text-[14px] md:text-[15px] font-bold text-center transition-all cursor-pointer whitespace-nowrap ${
-                    isSelected
-                      ? "border-2 border-[#0284c7] text-[#0284c7] bg-[#0284c7]/5 shadow-sm"
-                      : "border border-slate-300 text-slate-700 hover:border-slate-400 bg-white"
-                  }`}
-                >
-                  {fp.label}
-                </button>
-              );
-            })}
+            {footprints.map((fp) => (
+              <span
+                key={fp.id}
+                className={`px-3 sm:px-5 py-2.5 rounded-full font-heading text-[12px] sm:text-[14px] md:text-[15px] font-bold text-center whitespace-nowrap select-none pointer-events-none shadow-sm ${fp.colorClass}`}
+              >
+                {fp.label}
+              </span>
+            ))}
           </div>
         </div>
 
@@ -499,12 +507,46 @@ export default function SaberXADetail() {
         </div>
       </section>
 
-      {/* 6. Indications and Safety box */}
+      {/* 6. See the System */}
+      <section className={`bg-gradient-to-b from-[#070b14] to-[#0c1626] text-white ${sectionPad}`}>
+        <div className="max-w-[1200px] mx-auto">
+          <h2 className="font-heading font-bold text-[30px] md:text-[40px] tracking-tight mb-8">
+            See the System
+          </h2>
+          <ClickToPlayVideo
+            src={cldVideo(ANIMATION)}
+            poster={cldPoster(ANIMATION, 5)}
+            title="Saber-XA™ expandable ALIF system animation"
+          />
+        </div>
+      </section>
+
+      {/* 7. Indications and Safety box */}
       <section className="bg-white px-6 md:px-12 lg:px-16 py-12 border-t border-black/[0.06]">
         <div className="max-w-[1200px] mx-auto bg-[#f8fafc] border-l-4 border-l-[#0891b2] border border-black/[0.08] rounded-[6px] p-6 md:p-8 shadow-sm">
-          <h3 className="font-mono font-bold uppercase tracking-[0.15em] text-[12px] md:text-[13px] text-[#0891b2] mb-4">
-            INDICATIONS AND SAFETY
-          </h3>
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+            <h3 className="font-mono font-bold uppercase tracking-[0.15em] text-[12px] md:text-[13px] text-[#0891b2]">
+              INDICATIONS AND SAFETY
+            </h3>
+            <div className="flex items-center gap-3 self-start sm:self-auto shrink-0">
+              <a
+                href="/ifu/saber-xa-ifu.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-white border border-slate-300 hover:border-[#0891b2] text-[#0a0e17] hover:text-[#0891b2] px-3.5 py-1.5 rounded-[4px] font-heading font-semibold text-[12px] transition-colors shadow-sm"
+              >
+                <FileText className="w-3.5 h-3.5 text-[#0891b2]" />
+                View IFU (PDF)
+                <ExternalLink className="w-3 h-3 opacity-70" />
+              </a>
+              <Link
+                to="/ifu#saber-xa"
+                className="text-[#0891b2] hover:text-[#0a0e17] font-heading font-semibold text-[12px] transition-colors"
+              >
+                eIFU Hub →
+              </Link>
+            </div>
+          </div>
           <ul className="space-y-2.5 text-[#334155] text-[13px] md:text-[14px] leading-relaxed list-disc list-inside">
             <li>
               Indicated for intervertebral fusion in patients with degenerative disc disease at one or two contiguous levels, L1 to S1.
@@ -513,7 +555,16 @@ export default function SaberXADetail() {
               All interbody constructs require FDA-cleared supplemental fixation.
             </li>
             <li>
-              Refer to the Saber-XA IFU for full indications, contraindications, warnings and precautions.
+              Refer to the{" "}
+              <a
+                href="/ifu/saber-xa-ifu.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#0891b2] font-semibold underline underline-offset-2 hover:text-[#0a0e17] transition-colors"
+              >
+                Saber-XA IFU (651-40001 Rev. A)
+              </a>{" "}
+              for full indications, contraindications, warnings and precautions.
             </li>
           </ul>
         </div>

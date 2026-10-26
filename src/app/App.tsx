@@ -12,6 +12,7 @@ import SaberXADetail from './SaberXADetail.tsx';
 import Privacy from './pages/Privacy.tsx';
 import Legal from './pages/Legal.tsx';
 import FDANotices from './pages/FDANotices.tsx';
+import IFU from './pages/IFU.tsx';
 import Motion from "./components/Motion.tsx";
 
 // Legal and FDA pages stay out of the footer until Jim signs off.
@@ -282,6 +283,7 @@ function NewsletterSignup() {
 
 function Footer() {
   const legalLinks = [
+    { label: "Instructions for Use (IFU)", href: "/ifu" },
     { label: "Privacy policy", href: "/privacy" },
     ...(SHOW_LEGAL_AND_FDA
       ? [
@@ -395,6 +397,7 @@ function AppRoutes() {
       <Route path="/privacy" element={<Privacy />} />
       <Route path="/legal" element={<Legal />} />
       <Route path="/fda-notices" element={<FDANotices />} />
+      <Route path="/ifu" element={<IFU />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
