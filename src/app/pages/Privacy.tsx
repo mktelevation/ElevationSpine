@@ -24,7 +24,7 @@ export default function Privacy() {
             <p>If you have questions about this Privacy Policy, please contact us at <a href="mailto:info@elevationspine.com" className="text-[#2ac4f4] hover:underline">info@elevationspine.com</a> or call <a href="tel:8444150226" className="text-[#2ac4f4] hover:underline">(844) 415-0226</a>.</p>
             <p className="text-sm text-[#94a3b8] mt-10">
               2511 Garden Road, Suite B125, Monterey, California 93940<br />
-              Last updated: 2026
+              Last updated: October 27, 2026
             </p>
           </div>
           <div className="mt-10">

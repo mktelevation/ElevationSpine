@@ -30,7 +30,7 @@ const heroFeatures = [
     desc: "Choose spikes or screws through the anterior plate.",
   },
   {
-    title: "Zero-profile Anterior Lumbar Plate",
+    title: "Zero-Profile Anterior Lumbar Plate",
     desc: "",
   },
 ];
@@ -41,7 +41,7 @@ const photoRow = [
     image: "SaberXA-Images-Oct2026-08",
   },
   {
-    caption: "Curved spikes, the inline fixation option",
+    caption: "Curved spikes, the in-line fixation option",
     image: "SaberXA-Images-Oct2026-07",
   },
   {
@@ -72,10 +72,10 @@ const sizingTiers = [
   {
     label: "11mm",
     sub: "Short",
-    heightText: "11-14mm",
+    heightText: "11–14mm",
     heightLeft: "0%",
     heightWidth: "37.5%",
-    lordosisText: "6° - 13°",
+    lordosisText: "6°–13°",
     lordosisLeft: "0%",
     lordosisWidth: "36.8%",
     barColor: "bg-[#38bdf8]",
@@ -83,10 +83,10 @@ const sizingTiers = [
   {
     label: "13mm",
     sub: "Medium",
-    heightText: "13-16mm",
+    heightText: "13–16mm",
     heightLeft: "25%",
     heightWidth: "37.5%",
-    lordosisText: "12° - 19°",
+    lordosisText: "12°–19°",
     lordosisLeft: "31.5%",
     lordosisWidth: "36.8%",
     barColor: "bg-[#0ea5e9]",
@@ -94,10 +94,10 @@ const sizingTiers = [
   {
     label: "16mm",
     sub: "Tall",
-    heightText: "16-19mm",
+    heightText: "16–19mm",
     heightLeft: "62.5%",
     heightWidth: "37.5%",
-    lordosisText: "18° - 25°",
+    lordosisText: "18°–25°",
     lordosisLeft: "63.1%",
     lordosisWidth: "36.8%",
     barColor: "bg-[#0284c7]",
@@ -108,7 +108,7 @@ const specs = [
   {
     title: "Anterior Lumbar Plate",
     image: "NASS_HERO_IMAGES-05",
-    lines: ["Zero-profile", "34, 37, 40mm widths"],
+    lines: ["Zero-Profile", "34, 37, 40mm widths"],
   },
   {
     title: "Spikes",
@@ -118,7 +118,7 @@ const specs = [
   {
     title: "Screws",
     image: "NASS_HERO_IMAGES-08",
-    lines: ["5.0 & 5.5mm diameters", "20-35mm lengths, 2.5mm increments"],
+    lines: ["5.0 & 5.5mm diameters", "20–35mm lengths, 2.5mm increments"],
   },
 ];
 
@@ -290,11 +290,11 @@ function SizingSection() {
               <div className="col-span-2"></div>
               <div className="col-span-5 flex justify-between items-center pr-3">
                 <span className="font-bold text-[#0a0e17]">HEIGHT</span>
-                <span className="font-semibold text-[#0284c7] whitespace-nowrap">11-19mm</span>
+                <span className="font-semibold text-[#0284c7] whitespace-nowrap">11–19mm</span>
               </div>
               <div className="col-span-5 flex justify-between items-center pr-3">
                 <span className="font-bold text-[#0a0e17]">LORDOSIS</span>
-                <span className="font-semibold text-[#0284c7] whitespace-nowrap">6° - 25°</span>
+                <span className="font-semibold text-[#0284c7] whitespace-nowrap">6°–25°</span>
               </div>
             </div>
 
@@ -562,7 +562,7 @@ export default function SaberXADetail() {
                 rel="noopener noreferrer"
                 className="text-[#0891b2] font-semibold underline underline-offset-2 hover:text-[#0a0e17] transition-colors"
               >
-                Saber-XA IFU (651-40001 Rev. A)
+                Saber-XA IFU (651-40001 Rev. A, Appendix A)
               </a>{" "}
               for full indications, contraindications, warnings and precautions.
             </li>

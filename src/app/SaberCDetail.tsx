@@ -30,7 +30,7 @@ const features = [
     desc: "Pre-loaded in-line spikes or screws. Both in one tray.",
   },
   {
-    title: "Zero-profile Anterior Cervical Plate",
+    title: "Zero-Profile Anterior Cervical Plate",
     desc: "",
   },
 ];
@@ -155,7 +155,7 @@ export default function SaberCDetail() {
                 Anterior Cervical Plate
               </h3>
               <p className="text-[#64748b] text-[15px] leading-relaxed">
-                Zero-profile
+                Zero-Profile
               </p>
             </div>
 
@@ -182,7 +182,7 @@ export default function SaberCDetail() {
                 Spikes: 12mm & 14mm
               </p>
               <p className="text-[#64748b] text-[15px] leading-relaxed">
-                Screws: 12mm–20mm
+                Screws: 12–20mm
               </p>
             </div>
           </div>

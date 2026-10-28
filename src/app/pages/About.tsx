@@ -16,7 +16,7 @@ const teamMembers = [
     sections: [
       {
         title: "Executive Profile",
-        content: "Charlie Gilbride is the Founder, President, and Chief Executive Officer of Elevation Spine. He brings more than 30 years of medical device experience to the company, the majority of it in the spine field. Prior to founding Elevation Spine, Charlie held leadership roles at LDR Spine, ATEC Spine, and Spinal Motion, where he guided commercial organizations through numerous successful product launches as well as complex turnaround situations, building a reputation for driving growth in competitive markets. He founded Elevation Spine to bring the Saber® Technology platform to market — a streamlined, integrated approach to spinal fixation designed to reduce procedural steps and improve patient outcomes."
+        content: "Charlie Gilbride is the Founder, President, and Chief Executive Officer of Elevation Spine. He brings more than 30 years of medical device experience to the company, the majority of it in the spine field. Prior to founding Elevation Spine, Charlie held leadership roles at LDR Spine, ATEC Spine, and Spinal Motion, where he guided commercial organizations through numerous successful product launches as well as complex turnaround situations, building a reputation for driving growth in competitive markets. He founded Elevation Spine to bring the Saber® Technology platform to market—a streamlined, integrated approach to spinal fixation designed to reduce procedural steps and improve patient outcomes."
       },
       {
         title: "Industry Leadership",
@@ -41,7 +41,7 @@ const teamMembers = [
       },
       {
         title: "Professional Background",
-        content: "John has held senior leadership positions at Blackstone Medical, a leading innovator in spinal technologies. He also served as founder and president of Incite Innovation, where he developed innovative spinal technologies, including an anchored cervical interbody device implant system. Throughout his career, John has successfully led the development and commercialization of medical devices from concept through manufacturing and full-scale launch. His deep expertise spans product engineering, quality systems, regulatory pathway strategy, manufacturing operations, and business development."
+        content: "John has held senior leadership positions at Blackstone Medical, a leading innovator in spinal technologies. He also served as founder and president of Incite Innovation, where he developed innovative spinal technologies, including an anchored cervical interbody implant system. Throughout his career, John has successfully led the development and commercialization of medical devices from concept through manufacturing and full-scale launch. His deep expertise spans product engineering, quality systems, regulatory pathway strategy, manufacturing operations, and business development."
       },
       {
         title: "Key Expertise at Elevation",
@@ -91,7 +91,7 @@ const teamMembers = [
       },
       {
         title: "Education",
-        content: "Jim holds a Bachelor of Science degree in Engineering Management from the Missouri University of Science & Technology, giving him a deep understanding of both engineering principles and business operations."
+        content: "Jim holds a Bachelor of Science degree in Engineering Management from the Missouri University of Science and Technology, giving him a deep understanding of both engineering principles and business operations."
       }
     ]
   }

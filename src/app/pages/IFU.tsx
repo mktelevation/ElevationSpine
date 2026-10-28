@@ -207,7 +207,7 @@ export default function IFU() {
             Paper Copy Request Notice
           </h3>
           <p className="font-sans text-[#334155] text-[14px] md:text-[15px] leading-relaxed mb-6 max-w-3xl">
-            In compliance with FDA electronic labeling regulations, healthcare professionals within the United States may request a free printed paper copy of any Instruction for Use (IFU) document. Paper copies will be dispatched within seven (7) calendar days of request at no charge.
+            In compliance with FDA electronic labeling regulations, healthcare professionals within the United States may request a free printed paper copy of any Instructions for Use (IFU) document. Paper copies will be dispatched within seven (7) calendar days of request at no charge.
           </p>
 
           <div className="flex flex-wrap items-center gap-6 text-[14px]">
@@ -221,7 +221,7 @@ export default function IFU() {
             <span className="text-slate-300 hidden sm:inline">|</span>
             <span className="inline-flex items-center gap-2 text-[#4a5568]">
               <Phone className="w-4 h-4 text-[#0891b2]" />
-              (800) 807-6010
+              (844) 415-0226
             </span>
           </div>
         </div>

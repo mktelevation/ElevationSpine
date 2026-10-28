@@ -20,7 +20,7 @@ export const pressReleases: PressRelease[] = [
   {
     date: "July 28, 2026",
     headline:
-      "Elevation Spine Receives FDA 510(k) Clearance for Saber-C® AVIA™, A Complete Anterior Cervical Fixation System with a Porous 3D-Printed Titanium Interbody",
+      "Elevation Spine Receives FDA 510(k) Clearance for Saber-C® AVIA™, a Complete Anterior Cervical Fixation System with a Porous 3D-Printed Titanium Interbody",
     url: "https://www.businesswire.com/news/home/20260728765422/en/Elevation-Spine-Receives-FDA-510k-Clearance-for-Saber-C-AVIA-A-Complete-Anterior-Cervical-Fixation-System-with-a-Porous-3D-Printed-Titanium-Interbody",
     image: "avia-porous-body-top-down-small",
   },
