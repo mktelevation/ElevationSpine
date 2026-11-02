@@ -67,13 +67,12 @@ export default function SaberCDetail() {
           </div>
 
           <div>
-            <div className="relative bg-[#0f1520] border border-white/10 rounded-[10px] overflow-hidden p-6 md:p-10 aspect-[4/3] flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-              <img
-                src={cldImage("NASS_HERO_IMAGES-01", 1600)}
-                alt="Saber-C® | AVIA™ system render"
-                className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(42,196,244,0.25)]"
-              />
-            </div>
+            <ClickToPlayVideo
+              src={cldVideo(ANIMATION)}
+              poster={cldPoster(ANIMATION, 40)}
+              title="Saber-C AVIA product animation"
+              className="border border-white/10 rounded-[10px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
+            />
             <SpikeDisclaimer dark className="mt-3 text-center" />
           </div>
         </div>
@@ -189,20 +188,6 @@ export default function SaberCDetail() {
         </div>
       </section>
 
-      {/* 4. See the System */}
-      <section className={`bg-gradient-to-b from-[#070b14] to-[#0c1626] text-white ${sectionPad}`}>
-        <div className="max-w-[1200px] mx-auto">
-          <h2 className="font-heading font-bold text-[30px] md:text-[40px] tracking-tight mb-8">
-            See the System
-          </h2>
-          <ClickToPlayVideo
-            src={cldVideo(ANIMATION)}
-            poster={cldPoster(ANIMATION, 40)}
-            title="Saber-C AVIA product animation"
-          />
-          <SpikeDisclaimer dark className="mt-3 text-center" />
-        </div>
-      </section>
 
       {/* 5. Bottom three cards */}
       <section className={`bg-white ${sectionPad} border-t border-black/[0.05]`}>

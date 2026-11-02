@@ -14,7 +14,7 @@ import {
   usePageMeta,
 } from "./components/site.tsx";
 
-const ANIMATION = "SABER-XA_Anatomical_IFU_no-fixation-endcard";
+const ANIMATION = "v1793638822/SABER-XA_Anatomical";
 
 const heroFeatures = [
   {
@@ -437,11 +437,12 @@ export default function SaberXADetail() {
             </div>
           </div>
 
-          <div className="relative bg-[#0f1520] border border-white/10 rounded-[10px] overflow-hidden p-6 md:p-10 aspect-[4/3] flex items-center justify-center shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
-            <img
-              src={cldImage("NASS_HERO_IMAGES-02", 1600)}
-              alt="Saber-XA™ expandable ALIF system render"
-              className="w-full h-full object-contain filter drop-shadow-[0_20px_40px_rgba(42,196,244,0.25)]"
+          <div>
+            <ClickToPlayVideo
+              src={cldVideo(ANIMATION)}
+              poster={cldPoster(ANIMATION, 5)}
+              title="Saber-XA™ expandable ALIF system animation"
+              className="border border-white/10 rounded-[10px] shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
             />
           </div>
         </div>
@@ -507,19 +508,6 @@ export default function SaberXADetail() {
         </div>
       </section>
 
-      {/* 6. See the System */}
-      <section className={`bg-gradient-to-b from-[#070b14] to-[#0c1626] text-white ${sectionPad}`}>
-        <div className="max-w-[1200px] mx-auto">
-          <h2 className="font-heading font-bold text-[30px] md:text-[40px] tracking-tight mb-8">
-            See the System
-          </h2>
-          <ClickToPlayVideo
-            src={cldVideo(ANIMATION)}
-            poster={cldPoster(ANIMATION, 5)}
-            title="Saber-XA™ expandable ALIF system animation"
-          />
-        </div>
-      </section>
 
       {/* 7. Indications and Safety box */}
       <section className="bg-white px-6 md:px-12 lg:px-16 py-12 border-t border-black/[0.06]">
