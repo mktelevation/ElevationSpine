@@ -222,7 +222,7 @@ export default function About() {
             </h2>
             <ClickToPlayVideo
               src={cldVideo(CEO_VIDEO)}
-              poster={cldPoster(CEO_VIDEO, 14)}
+              poster={cldPoster(CEO_VIDEO, 15)}
               title="Charlie Gilbride, Founder, President and CEO of Elevation Spine"
             />
           </div>
