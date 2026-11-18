@@ -132,41 +132,43 @@ export default function About() {
               role="dialog"
               aria-modal="true"
               aria-label={selectedMember.name}
-              className="relative w-full max-w-5xl bg-white rounded-[12px] shadow-2xl overflow-hidden flex flex-col md:flex-row max-h-[90vh]"
+              className="relative w-full max-w-5xl bg-white rounded-[12px] shadow-2xl overflow-hidden flex flex-col max-h-[90dvh]"
             >
               <button
                 onClick={() => setSelectedMember(null)}
                 aria-label="Close"
-                className="absolute top-6 right-6 z-10 w-10 h-10 bg-black/5 hover:bg-black/10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-20 w-10 h-10 bg-white/90 hover:bg-white shadow-md border border-black/10 rounded-full flex items-center justify-center transition-colors cursor-pointer"
               >
                 <X className="w-5 h-5 text-[#1a2535]" />
               </button>
 
-              <div className="relative w-full md:w-2/5 p-8 md:p-10 flex flex-col shrink-0 overflow-hidden text-white bg-[#0a0e17]">
-                <div className="rounded-[8px] overflow-hidden mb-6 border border-white/20 shadow-2xl bg-white">
-                  <img src={selectedMember.image} alt={selectedMember.name} decoding="async" className="w-full h-auto block object-contain" />
+              <div className="flex flex-col md:flex-row overflow-y-auto md:overflow-hidden flex-1 min-h-0 overscroll-contain">
+                <div className="relative w-full md:w-2/5 p-6 sm:p-8 md:p-10 flex flex-col shrink-0 text-white bg-[#0a0e17] md:overflow-y-auto">
+                  <div className="rounded-[8px] overflow-hidden mb-6 border border-white/20 shadow-2xl bg-white">
+                    <img src={selectedMember.image} alt={selectedMember.name} decoding="async" className="w-full h-auto block object-contain" />
+                  </div>
+                  <h3 className="font-heading font-bold text-2xl mb-1">{selectedMember.name}</h3>
+                  <p className="font-mono text-[#2ac4f4] text-xs uppercase tracking-wider mb-6 font-semibold">{selectedMember.role}</p>
+                  <a
+                    href={selectedMember.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-auto inline-flex items-center justify-center gap-3 bg-[#0077b5] text-white px-5 py-3 rounded-[5px] hover:bg-[#006097] transition-colors font-bold text-[14px] w-full border border-white/10"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                    Connect on LinkedIn
+                  </a>
                 </div>
-                <h3 className="font-heading font-bold text-2xl mb-1">{selectedMember.name}</h3>
-                <p className="font-mono text-[#2ac4f4] text-xs uppercase tracking-wider mb-6 font-semibold">{selectedMember.role}</p>
-                <a
-                  href={selectedMember.linkedin}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center justify-center gap-3 bg-[#0077b5] text-white px-5 py-3 rounded-[5px] hover:bg-[#006097] transition-colors font-bold text-[14px] w-full border border-white/10"
-                >
-                  <Linkedin className="w-4 h-4" />
-                  Connect on LinkedIn
-                </a>
-              </div>
 
-              <div className="w-full md:w-3/5 p-8 md:p-10 overflow-y-auto">
-                <div className="flex flex-col gap-6">
-                  {selectedMember.sections.map((section, sIdx) => (
-                    <div key={sIdx}>
-                      <h4 className="font-heading font-bold text-[#1a2535] text-lg mb-2">{section.title}</h4>
-                      <p className="text-[#4a5568] text-[15px] leading-relaxed">{section.content}</p>
-                    </div>
-                  ))}
+                <div className="w-full md:w-3/5 p-6 sm:p-8 md:p-10 md:overflow-y-auto">
+                  <div className="flex flex-col gap-6">
+                    {selectedMember.sections.map((section, sIdx) => (
+                      <div key={sIdx}>
+                        <h4 className="font-heading font-bold text-[#1a2535] text-lg mb-2">{section.title}</h4>
+                        <p className="text-[#4a5568] text-[15px] leading-relaxed">{section.content}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </motion.div>
